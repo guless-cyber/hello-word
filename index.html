@@ -254,6 +254,9 @@
       .hotspot-stage[data-mode="hide"] .doc-banner { opacity: .13; transform: translateX(-10px); }
       .hotspot-stage[data-mode="links"] .doc-link { padding: 5px 7px; border-radius: 4px; color: #d94f3d; background: var(--accent-soft); text-decoration: underline; text-underline-offset: 2px; }
       .hotspot-stage[data-mode="format"] .control-pdf { width: min(650px, 65vw); }
+      #controls .hotspot-stage[data-mode="hide"] .control-pdf.real-pdf-viewer { width: min(650px, 65vw); }
+      .hotspot-stage[data-mode="hide"] .hotspot:nth-child(3) { bottom: 4%; left: 0; }
+      .hotspot-stage[data-mode="hide"] .hotspot:nth-child(4) { right: 0; bottom: 4%; }
       .hotspot-stage[data-mode="format"] .paper-sheet { min-height: 392px; padding: 27px 31px; }
       .hotspot-stage[data-mode="format"] .document-layout { grid-template-columns: 96px 1fr; gap: 33px; }
       .hotspot-stage[data-mode="clean"] .document-watermark { opacity: 0; transform: rotate(-19deg) translateY(7px); }
@@ -306,9 +309,8 @@
       .rail-state { position: absolute; inset: 0; padding: 11px 9px; opacity: 0; transition: opacity .2s ease; }
       .rail-default { opacity: 1; }
       .rail-label { display: block; margin-bottom: 8px; color: #7e8592; font-size: 8px; font-weight: 850; line-height: 1; letter-spacing: .06em; text-align: center; }
-      .rail-default .rail-document { aspect-ratio: 1.28; height: auto; overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); box-shadow: 0 2px 4px rgba(23,25,31,.06); }
-      .rail-default .rail-document img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top left; }
-      .rail-more { display: block; margin-top: 9px; color: #8a919d; font-size: 7px; font-weight: 750; letter-spacing: .03em; line-height: 1.2; text-align: center; }
+      .rail-default .rail-document { height: calc(100% - 23px); overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); box-shadow: 0 2px 4px rgba(23,25,31,.06); }
+      .rail-default .rail-document img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top; }
       .rail-continuous .rail-document { height: calc(100% - 23px); overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); box-shadow: 0 2px 4px rgba(23,25,31,.06); }
       .rail-continuous img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top; }
       .rail-format { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 5px; }
@@ -321,10 +323,10 @@
       .real-page { position: relative; width: 100%; max-height: 100%; overflow: hidden; border: 1px solid #d9dce2; border-radius: 3px; background: var(--white); box-shadow: 0 8px 16px rgba(23,25,31,.08); }
       .real-page img { display: block; width: 100%; height: 100%; object-fit: cover; }
       .state-hide { display: block; padding: 16px; }
-      .hide-comparison { position: relative; display: grid; place-items: center; width: 100%; height: 100%; }
-      .hide-after { position: relative; z-index: 1; width: 100%; height: 100%; }
+      .hide-comparison { position: relative; display: grid; place-items: center; width: 100%; height: 100%; padding: 18px 0; }
+      .hide-after { position: relative; z-index: 1; width: 100%; height: auto; aspect-ratio: 1.349; }
       .hide-after img { object-fit: contain; object-position: center; }
-      .hide-before { position: absolute; z-index: 3; top: 8px; left: 0; width: clamp(140px, 42%, 190px); aspect-ratio: 1.299; overflow: visible; border: 1px solid #cdd1d9; border-radius: 4px; background: var(--white); box-shadow: 0 10px 20px rgba(23,25,31,.16); }
+      .hide-before { position: absolute; z-index: 3; top: 4%; left: 0; width: clamp(180px, 52%, 220px); aspect-ratio: 1.299; overflow: visible; border: 1px solid #cdd1d9; border-radius: 4px; background: var(--white); box-shadow: 0 10px 20px rgba(23,25,31,.16); }
       .hide-before img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
       .hide-proof-label { position: absolute; z-index: 4; display: inline-flex; align-items: center; gap: 5px; padding: 5px 7px; border-radius: 5px; color: #4c5361; background: rgba(255,255,255,.96); box-shadow: 0 4px 10px rgba(23,25,31,.1); font-size: 9px; font-weight: 850; letter-spacing: .04em; line-height: 1; text-transform: uppercase; }
       .hide-before .hide-proof-label { top: 7px; left: 7px; }
@@ -465,19 +467,21 @@
       }
       @media (max-width: 820px) {
         #controls .control-pdf.real-pdf-viewer { width: min(100%, 510px); height: 484px; min-height: 484px; padding: 11px; }
+        #controls .hotspot-stage[data-mode="hide"] .control-pdf.real-pdf-viewer { width: min(100%, 510px); }
         .pdf-viewer-body { grid-template-columns: 54px minmax(0, 1fr); }
         #controls .hotspot { inset: auto; }
         .hotspot-stage::before { height: 494px; }
       }
       @media (max-width: 520px) {
         #controls .control-pdf.real-pdf-viewer { height: 434px; min-height: 434px; padding: 10px; }
+        #controls .hotspot-stage[data-mode="hide"] .control-pdf.real-pdf-viewer { width: 100%; }
         .pdf-viewer-bar { min-height: 28px; padding-bottom: 7px; }
         .pdf-viewer-bar strong { max-width: 54%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .pdf-viewer-body { grid-template-columns: 48px minmax(0, 1fr); }
         .rail-state { padding: 9px 7px; }
         .rail-page-stack i { height: 51px; }
         .state-hide, .state-links, .state-clean { padding: 10px; }
-        .hide-before { top: 6px; width: clamp(122px, 44%, 142px); }
+        .hide-before { top: 5%; width: clamp(146px, 52%, 160px); }
         .hide-proof-label { gap: 4px; padding: 4px 5px; font-size: 8px; }
         .hide-after .hide-proof-label::before { width: 11px; height: 11px; font-size: 7px; }
         .state-clean { padding: 20px 10px 18px; }
@@ -596,9 +600,8 @@
               <div class="pdf-viewer-body">
                 <aside class="page-rail" aria-label="PDF page thumbnails">
                   <div class="rail-state rail-default">
-                    <span class="rail-label">1 / 20</span>
-                    <div class="rail-document"><img src="assets/control-pdf/hide-after.png" alt="First page of the clean Albert Einstein PDF"></div>
-                    <span class="rail-more" aria-hidden="true">19 more pages</span>
+                    <span class="rail-label">1 PAGE</span>
+                    <div class="rail-document"><img src="assets/control-pdf/hide-continuous.png" alt="The complete continuous Albert Einstein PDF page"></div>
                   </div>
                   <div class="rail-state rail-continuous">
                     <span class="rail-label">1 PAGE</span>
@@ -614,7 +617,7 @@
                   <section class="pdf-state state-hide is-visible" data-preview="hide" aria-label="Before and after comparison of unwanted Wikipedia blocks removed from a real Albert Einstein PDF export">
                     <div class="hide-comparison">
                       <figure class="hide-before"><img src="assets/control-pdf/hide-before.png" alt="Original Albert Einstein web page with Contents and Appearance sidebars"><figcaption class="hide-proof-label">Before</figcaption></figure>
-                      <figure class="real-page hide-after"><img src="assets/control-pdf/hide-after.png" alt="Complete Albert Einstein PDF page with the unwanted sidebars removed"><figcaption class="hide-proof-label">Clean PDF</figcaption></figure>
+                      <figure class="real-page hide-after"><img src="assets/control-pdf/hide-after-detail.png" alt="Readable 100 percent view of the clean Albert Einstein PDF page with unwanted sidebars removed"><figcaption class="hide-proof-label">PDF detail · 100%</figcaption></figure>
                     </div>
                   </section>
 
