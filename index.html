@@ -281,6 +281,29 @@
       .finished-pdf span { display: block; height: 5px; margin-top: 7px; border-radius: 30px; background: #d8dce2; }
       .finished-pdf span:nth-child(4n) { width: 75%; }
 
+      .faq { padding: clamp(78px, 10vw, 132px) 0; }
+      .faq-intro { max-width: 690px; }
+      .faq-list { max-width: 820px; margin: 51px 0 0; border-top: 1px solid var(--line); }
+      .faq-item { border-bottom: 1px solid var(--line); }
+      .faq-item summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: 72px;
+        padding: 14px 2px;
+        color: #262934;
+        cursor: pointer;
+        font-size: 17px;
+        font-weight: 760;
+        line-height: 1.35;
+        list-style: none;
+      }
+      .faq-item summary::-webkit-details-marker { display: none; }
+      .faq-item summary::after { content: "+"; flex: 0 0 auto; color: var(--accent); font-size: 27px; font-weight: 400; line-height: 1; transition: transform .18s ease; }
+      .faq-item[open] summary::after { transform: rotate(45deg); }
+      .faq-answer { max-width: 730px; margin: -1px 0 0; padding: 0 42px 23px 2px; color: var(--muted); font-size: 16px; line-height: 1.58; }
+
       .site-footer { color: #c6cad2; background: #181a21; }
       .footer-row { display: flex; align-items: center; justify-content: space-between; min-height: 88px; gap: 24px; font-size: 13px; }
       .footer-row .brand { color: var(--white); }
@@ -306,6 +329,7 @@
         .hotspot-stage[data-mode="format"] .paper-sheet { min-height: 408px; }
         .steps { grid-template-columns: 1fr; gap: 35px; max-width: 440px; margin-right: auto; margin-left: auto; }
         .step:not(:last-child)::after { top: auto; right: auto; bottom: -31px; left: calc(50% - 12px); transform: rotate(90deg); }
+        .faq-list { max-width: 620px; }
       }
       @media (max-width: 520px) {
         .shell { width: min(100% - 32px, 460px); }
@@ -331,6 +355,9 @@
         .hotspot { min-height: 74px; padding: 11px; font-size: 12px; }
         .step-visual { height: 174px; }
         .step:not(:last-child)::after { top: auto; }
+        .faq-list { margin-top: 40px; }
+        .faq-item summary { min-height: 64px; gap: 16px; padding: 13px 0; font-size: 16px; }
+        .faq-answer { padding-right: 8px; padding-bottom: 20px; font-size: 15px; }
         .footer-row { align-items: flex-start; flex-direction: column; justify-content: center; padding: 22px 0; }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -482,13 +509,65 @@
           </div>
         </div>
       </section>
+
+      <section class="faq" id="faq" aria-labelledby="faq-title">
+        <div class="shell">
+          <div class="faq-intro">
+            <p class="eyebrow">FAQ</p>
+            <h2 id="faq-title">FAQ — Download webpage as PDF</h2>
+          </div>
+
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>How is Download webpage as PDF different from printing a web page to PDF?</summary>
+              <p class="faq-answer">Download webpage as PDF helps save long or complex pages that normal printing can cut off, split awkwardly, or render incorrectly. Use it when you need to download a web page for offline reading, sharing, or archiving.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Can it automatically remove ads and distractions?</summary>
+              <p class="faq-answer">Before export, the extension can hide common floating elements, including banners, chat widgets, cookie notices, and similar blocks.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I remove individual elements and bring them back if I need to?</summary>
+              <p class="faq-answer">Yes. You can hide selected page blocks, such as a sidebar or recommendations, and restore them before export.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I choose the PDF format, orientation, and layout?</summary>
+              <p class="faq-answer">Yes. You can choose paper size, orientation, margins, headers and footers, and either a one-continuous-page or multi-page PDF layout.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Will text in the PDF be selectable and searchable?</summary>
+              <p class="faq-answer">Usually. The extension creates a PDF, not a screenshot, so text can be selected and searched when Chrome preserves it in the document.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I download a webpage after I sign in?</summary>
+              <p class="faq-answer">Yes, on supported HTTP(S) pages already open in your current tab. The extension creates the PDF from the page you see. Chrome does not allow extensions to work on some system and protected pages.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Is my webpage or PDF sent to an external server?</summary>
+              <p class="faq-answer">No. The PDF is created and processed locally on your device.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Why does the extension need browser permission to create a PDF?</summary>
+              <p class="faq-answer">It uses Chrome's built-in capability to create a PDF from the tab you select. The connection is used only during export.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Why does the extension need access to the active tab?</summary>
+              <p class="faq-answer">It needs this access to create a PDF from the page you choose. Access to the selected tab's content begins after your action and is used for export.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Why does Chrome warn that the extension is debugging the page?</summary>
+              <p class="faq-answer">The extension uses the Chrome Debugger API to create a PDF from the tab you select and disconnects after the export is complete. This lets the extension process long and complex pages more accurately and create a high-quality, readable PDF that stays as close as possible to the original.</p>
+            </details>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer" id="privacy">
       <div class="shell footer-row">
         <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">↗</span>Web to PDF</a>
         <span>Made for pages that deserve to stay whole.</span>
-        <nav class="footer-links" aria-label="Footer navigation"><a href="#benefits">Benefits</a><a href="#top">Top</a></nav>
+        <nav class="footer-links" aria-label="Footer navigation"><a href="#benefits">Benefits</a><a href="#faq">FAQ</a><a href="#top">Top</a></nav>
       </div>
     </footer>
 
