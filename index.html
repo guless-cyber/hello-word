@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Download any webpage as a high-quality, paginated PDF in Chrome with selectable text and working links for printing, sharing, and offline reference">
     <link rel="icon" type="image/png" href="favicon/favicon.png">
+    <link rel="preload" as="image" href="assets/control-pdf/hide-after.jpg" fetchpriority="high">
     <title>Download webpage as PDF — Download Websites as PDFs</title>
     <style>
       :root {
@@ -625,8 +626,8 @@
                       <button class="hide-state-button" type="button" data-hide-state="after" aria-pressed="false">After</button>
                     </div>
                     <div class="hide-state-panel">
-                      <img class="hide-state-image" data-hide-image="before" src="assets/control-pdf/hide-before.png" alt="Original Albert Einstein page with Contents and Appearance sidebars">
-                      <img class="hide-state-image" data-hide-image="after" src="assets/control-pdf/hide-after.png" alt="Clean exported Albert Einstein PDF without sidebars" hidden>
+                      <img class="hide-state-image" data-hide-image="before" src="assets/control-pdf/hide-before.jpg" alt="Original Albert Einstein page with Contents and Appearance sidebars" decoding="async">
+                      <img class="hide-state-image" data-hide-image="after" src="assets/control-pdf/hide-after.jpg" alt="Clean exported Albert Einstein PDF without sidebars" decoding="async" hidden>
                     </div>
                   </section>
 
