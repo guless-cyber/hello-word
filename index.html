@@ -286,7 +286,6 @@
       }
       .pdf-viewer-bar strong { color: #4c5361; font-size: 10px; }
       .pdf-viewer-status { min-width: 0; overflow: hidden; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
-      .pdf-viewer-status::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 5px 1px 0; border-radius: 50%; background: #69ad7c; }
       .pdf-viewer-body {
         display: grid;
         grid-template-columns: 62px minmax(0, 1fr);
@@ -307,10 +306,9 @@
       .rail-state { position: absolute; inset: 0; padding: 11px 9px; opacity: 0; transition: opacity .2s ease; }
       .rail-default { opacity: 1; }
       .rail-label { display: block; margin-bottom: 8px; color: #7e8592; font-size: 8px; font-weight: 850; line-height: 1; letter-spacing: .06em; text-align: center; }
-      .rail-page-stack { display: grid; gap: 5px; }
-      .rail-page-stack i { display: block; height: 58px; border: 1px solid #cfd3db; border-radius: 2px; background: linear-gradient(#fff 0 15%, #f2f3f6 15% 20%, #fff 20% 72%, #eef0f4 72% 77%, #fff 77%); box-shadow: 0 2px 4px rgba(23,25,31,.06); }
-      .rail-page-stack i:nth-child(2) { opacity: .72; transform: translateX(3px); }
-      .rail-page-stack i:nth-child(3) { opacity: .44; transform: translateX(6px); }
+      .rail-default .rail-document { aspect-ratio: 1.28; height: auto; overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); box-shadow: 0 2px 4px rgba(23,25,31,.06); }
+      .rail-default .rail-document img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top left; }
+      .rail-more { display: block; margin-top: 9px; color: #8a919d; font-size: 7px; font-weight: 750; letter-spacing: .03em; line-height: 1.2; text-align: center; }
       .rail-continuous .rail-document { height: calc(100% - 23px); overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); box-shadow: 0 2px 4px rgba(23,25,31,.06); }
       .rail-continuous img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top; }
       .rail-format { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 5px; }
@@ -322,12 +320,11 @@
       .pdf-state.is-visible { visibility: visible; opacity: 1; transform: translateY(0); }
       .real-page { position: relative; width: 100%; max-height: 100%; overflow: hidden; border: 1px solid #d9dce2; border-radius: 3px; background: var(--white); box-shadow: 0 8px 16px rgba(23,25,31,.08); }
       .real-page img { display: block; width: 100%; height: 100%; object-fit: cover; }
-      .state-hide .real-page { align-self: start; aspect-ratio: 1.28; margin-top: 20px; }
-      .state-hide img { object-fit: contain; object-position: 50% top; }
-      .state-links .real-page { align-self: start; aspect-ratio: 1.53; margin-top: 20px; }
-      .state-links img { object-fit: contain; object-position: 50% top; }
-      .link-preserved { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 5px; padding: 6px 7px; border: 1px solid #ffd2c9; border-radius: 6px; color: #bf4d3c; background: rgba(255,253,249,.94); box-shadow: 0 5px 12px rgba(23,25,31,.10); font-size: 9px; font-weight: 800; }
-      .link-preserved::before { content: "↗"; font-size: 12px; }
+      .state-hide .real-page { align-self: stretch; height: 100%; margin: 0; aspect-ratio: auto; }
+      .state-links .real-page { align-self: center; height: auto; margin: 0; aspect-ratio: 1.06; }
+      .state-hide img { object-fit: cover; object-position: 16% top; }
+      .state-links img { object-fit: cover; object-position: 15% top; }
+      .link-focus-ring { position: absolute; top: 35.5%; left: 39.5%; width: 39%; height: 10%; box-sizing: border-box; border: 2px solid var(--accent); border-radius: 4px; background: rgba(255, 104, 82, .10); box-shadow: 0 0 0 4px rgba(255, 104, 82, .13), 0 6px 12px rgba(255, 104, 82, .16); pointer-events: none; }
       .format-comparison { position: relative; width: 100%; height: 100%; }
       .format-settings { position: absolute; z-index: 3; top: 0; left: 0; display: inline-flex; max-width: 100%; gap: 6px; padding: 6px 8px; border: 1px solid #f0d3cc; border-radius: 6px; color: #a65344; background: rgba(255,253,249,.96); box-shadow: 0 4px 10px rgba(23,25,31,.08); font-size: 8px; font-weight: 850; line-height: 1.2; }
       .format-settings span { white-space: nowrap; }
@@ -344,8 +341,10 @@
       .clean-footer { position: absolute; right: 9px; bottom: 9px; display: inline-flex; align-items: center; gap: 5px; padding: 5px 6px; border: 1px solid #d7eadb; border-radius: 5px; color: #3f7652; background: rgba(255,253,249,.95); font-size: 8px; font-weight: 850; }
       .clean-footer::before { content: "✓"; display: grid; place-items: center; width: 12px; height: 12px; border-radius: 50%; color: #ffffff; background: #55a46a; font-size: 8px; }
       .hotspot-stage[data-mode="clean"] .rail-default,
-      .hotspot-stage[data-mode="format"] .rail-default { opacity: 0; }
+      .hotspot-stage[data-mode="format"] .rail-default,
+      .hotspot-stage[data-mode="links"] .rail-default { opacity: 0; }
       .hotspot-stage[data-mode="clean"] .rail-continuous,
+      .hotspot-stage[data-mode="links"] .rail-continuous,
       .hotspot-stage[data-mode="format"] .rail-format { opacity: 1; }
       .hotspot-stage[data-mode="hide"] .state-hide,
       .hotspot-stage[data-mode="links"] .state-links,
@@ -575,13 +574,14 @@
             <div class="control-pdf real-pdf-viewer" aria-label="Interactive preview of a real exported PDF">
               <div class="pdf-viewer-bar" aria-hidden="true">
                 <strong>Albert Einstein.pdf</strong>
-                <span class="pdf-viewer-status">Clean export</span>
+                <span class="pdf-viewer-status">100%</span>
               </div>
               <div class="pdf-viewer-body">
                 <aside class="page-rail" aria-label="PDF page thumbnails">
                   <div class="rail-state rail-default">
-                    <span class="rail-label">20 PAGES</span>
-                    <div class="rail-page-stack"><i></i><i></i><i></i></div>
+                    <span class="rail-label">1 / 20</span>
+                    <div class="rail-document"><img src="assets/control-pdf/hide-proof.png" alt="First page of a real Albert Einstein PDF"></div>
+                    <span class="rail-more" aria-hidden="true">19 more pages</span>
                   </div>
                   <div class="rail-state rail-continuous">
                     <span class="rail-label">1 PAGE</span>
@@ -599,7 +599,7 @@
                   </section>
 
                   <section class="pdf-state state-links" data-preview="links" aria-label="Real PDF export preserving a highlighted link">
-                    <div class="real-page"><img src="assets/control-pdf/link-proof.png" alt="Albert Einstein page with a preserved theoretical physics link and URL tooltip"><span class="link-preserved" aria-hidden="true">Link preserved</span></div>
+                    <div class="real-page"><img src="assets/control-pdf/link-proof.png" alt="Albert Einstein page with a preserved theoretical physics link and URL tooltip"><span class="link-focus-ring" aria-hidden="true"></span></div>
                   </section>
 
                   <section class="pdf-state state-format" data-preview="format" aria-label="Portrait and landscape PDF formats compared">
@@ -754,12 +754,6 @@
       const hotspots = [...document.querySelectorAll('.hotspot')];
       const pdfStates = [...document.querySelectorAll('[data-preview]')];
       const previewStatus = document.querySelector('.pdf-viewer-status');
-      const previewMessages = {
-        hide: 'Clean export',
-        links: 'Selectable link kept',
-        format: 'Format comparison',
-        clean: 'No added branding'
-      };
       let selectedHotspot = 0;
 
       function showHotspot(index) {
@@ -767,7 +761,7 @@
         hotspotStage.dataset.mode = mode;
         hotspots.forEach((hotspot, current) => hotspot.classList.toggle('is-active', current === index));
         pdfStates.forEach(state => state.classList.toggle('is-visible', state.dataset.preview === mode));
-        previewStatus.textContent = previewMessages[mode];
+        previewStatus.textContent = '100%';
       }
 
       function selectHotspot(index) {
