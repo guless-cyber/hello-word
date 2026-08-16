@@ -316,9 +316,8 @@
       .rail-default .rail-document img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top; }
       .rail-continuous .rail-document { height: calc(100% - 23px); overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); box-shadow: 0 2px 4px rgba(23,25,31,.06); }
       .rail-continuous img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top; }
-      .rail-format { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 5px; }
-      .rail-format span { display: block; height: 93px; overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); }
-      .rail-format span:first-child { height: 132px; }
+      .rail-format { display: block; }
+      .rail-format span { display: block; height: 100%; overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); }
       .rail-format img { width: 100%; height: 100%; object-fit: contain; object-position: top; }
       .pdf-stage { position: relative; min-width: 0; min-height: 0; overflow: hidden; background: var(--white); }
       .pdf-state { position: absolute; inset: 0; display: grid; place-items: center; padding: 14px; visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
@@ -338,16 +337,14 @@
       .state-links .real-page > img { object-fit: contain; object-position: center; }
       .link-focus-ring { position: absolute; top: 24%; left: 24%; width: min(74%, 320px); aspect-ratio: 4.96; box-sizing: border-box; overflow: hidden; border: 2px solid #55a46a; border-radius: 5px; background: #ffffff; box-shadow: 0 0 0 4px rgba(85, 164, 106, .14), 0 8px 16px rgba(63, 118, 82, .18); pointer-events: none; }
       .link-focus-ring img { display: block; width: 100%; height: 100%; object-fit: contain; }
-      .format-comparison { position: relative; width: 100%; height: 100%; }
-      .format-settings { position: absolute; z-index: 3; top: 0; left: 0; display: inline-flex; max-width: 100%; gap: 6px; padding: 6px 8px; border: 1px solid #f0d3cc; border-radius: 6px; color: #a65344; background: rgba(255,253,249,.96); box-shadow: 0 4px 10px rgba(23,25,31,.08); font-size: 8px; font-weight: 850; line-height: 1.2; }
+      .format-comparison { position: relative; width: 100%; height: 100%; padding: 4px; }
+      .format-settings { position: absolute; z-index: 4; top: 4px; left: 4px; display: inline-flex; max-width: calc(100% - 8px); gap: 6px; padding: 6px 8px; border: 1px solid #f0d3cc; border-radius: 6px; color: #a65344; background: rgba(255,253,249,.96); box-shadow: 0 4px 10px rgba(23,25,31,.08); font-size: 8px; font-weight: 850; line-height: 1.2; }
       .format-settings span { white-space: nowrap; }
       .format-settings b { color: var(--accent); }
       .format-portrait, .format-landscape { position: absolute; overflow: hidden; border: 1px solid #d7dae0; border-radius: 4px; background: var(--white); box-shadow: 0 9px 19px rgba(23,25,31,.12); }
-      .format-portrait { z-index: 1; top: 44px; bottom: 9%; left: 1%; width: 39%; }
-      .format-landscape { z-index: 2; top: 28%; right: 0; width: 74%; aspect-ratio: 1.42; }
-      .format-portrait img, .format-landscape img { display: block; width: 100%; height: 100%; object-fit: cover; }
-      .format-portrait img { object-position: 50% 8%; }
-      .format-landscape img { object-position: 50% 26%; }
+      .format-portrait { z-index: 3; top: 31%; left: 3%; width: 27%; aspect-ratio: 2 / 3; }
+      .format-landscape { z-index: 2; top: 18%; right: 3%; width: 74%; aspect-ratio: 1.412; }
+      .format-portrait img, .format-landscape img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
       .format-label { position: absolute; z-index: 3; right: 7px; bottom: 7px; padding: 4px 5px; border-radius: 4px; color: #ffffff; background: #252832; font-size: 8px; font-weight: 800; }
       .state-clean { padding: 28px 14px 24px; }
       .state-clean .real-page { align-self: stretch; height: 100%; aspect-ratio: .77; max-width: 74%; }
@@ -504,8 +501,6 @@
         .clean-footer::before { width: 16px; height: 16px; font-size: 9px; }
         .link-focus-ring { top: 29%; }
         .format-settings { gap: 4px; padding: 5px 6px; font-size: 7px; }
-        .format-portrait { top: 37px; width: 40%; }
-        .format-landscape { top: 31%; width: 76%; }
         .hotspot-stage::before { height: 444px; }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -624,7 +619,6 @@
                   </div>
                   <div class="rail-state rail-format" aria-hidden="true">
                     <span><img src="assets/control-pdf/portrait-continuous.png" alt=""></span>
-                    <span><img src="assets/control-pdf/landscape-page-1.png" alt=""></span>
                   </div>
                 </aside>
 
@@ -646,9 +640,9 @@
 
                   <section class="pdf-state state-format" data-preview="format" aria-label="Portrait and landscape PDF formats compared">
                     <div class="format-comparison">
-                      <div class="format-settings" aria-hidden="true"><span>Continuous layout</span><b>→</b><span>Paged landscape layout</span></div>
-                      <div class="format-portrait"><img src="assets/control-pdf/portrait-top.png" alt="Continuous Albert Einstein PDF"><span class="format-label">Continuous</span></div>
-                      <div class="format-landscape"><img src="assets/control-pdf/landscape-focus.png" alt="Landscape Albert Einstein PDF"><span class="format-label">Landscape</span></div>
+                      <div class="format-settings" aria-hidden="true"><span>A4 · Portrait · Normal</span><b>→</b><span>A4 · Landscape · Narrow</span></div>
+                      <div class="format-portrait"><img src="assets/control-pdf/portrait-top.png" alt="A4 portrait Albert Einstein PDF with normal margins"><span class="format-label">Portrait</span></div>
+                      <div class="format-landscape"><img src="assets/control-pdf/landscape-page-1.png" alt="A4 landscape Albert Einstein PDF with narrow margins"><span class="format-label">Landscape</span></div>
                     </div>
                   </section>
 
