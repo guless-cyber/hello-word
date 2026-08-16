@@ -321,10 +321,11 @@
       .real-page { position: relative; width: 100%; max-height: 100%; overflow: hidden; border: 1px solid #d9dce2; border-radius: 3px; background: var(--white); box-shadow: 0 8px 16px rgba(23,25,31,.08); }
       .real-page img { display: block; width: 100%; height: 100%; object-fit: cover; }
       .state-hide .real-page { align-self: stretch; height: 100%; margin: 0; aspect-ratio: auto; }
-      .state-links .real-page { align-self: center; height: auto; margin: 0; aspect-ratio: 1.06; }
+      .state-links .real-page { align-self: stretch; height: 100%; margin: 0; aspect-ratio: auto; }
       .state-hide img { object-fit: cover; object-position: 16% top; }
-      .state-links img { object-fit: cover; object-position: left center; }
-      .link-focus-ring { position: absolute; top: 32%; left: 35%; width: 31%; height: 11%; box-sizing: border-box; border: 2px solid #55a46a; border-radius: 4px; background: rgba(222, 244, 228, .12); box-shadow: 0 0 0 4px rgba(85, 164, 106, .14), 0 6px 12px rgba(63, 118, 82, .15); pointer-events: none; }
+      .state-links .real-page > img { object-fit: contain; object-position: center; }
+      .link-focus-ring { position: absolute; left: 50%; bottom: 8%; width: min(78%, 320px); aspect-ratio: 4.96; box-sizing: border-box; overflow: hidden; border: 2px solid #55a46a; border-radius: 5px; background: #ffffff; box-shadow: 0 0 0 4px rgba(85, 164, 106, .14), 0 8px 16px rgba(63, 118, 82, .18); transform: translateX(-50%); pointer-events: none; }
+      .link-focus-ring img { display: block; width: 100%; height: 100%; object-fit: contain; }
       .format-comparison { position: relative; width: 100%; height: 100%; }
       .format-settings { position: absolute; z-index: 3; top: 0; left: 0; display: inline-flex; max-width: 100%; gap: 6px; padding: 6px 8px; border: 1px solid #f0d3cc; border-radius: 6px; color: #a65344; background: rgba(255,253,249,.96); box-shadow: 0 4px 10px rgba(23,25,31,.08); font-size: 8px; font-weight: 850; line-height: 1.2; }
       .format-settings span { white-space: nowrap; }
@@ -603,7 +604,7 @@
                   </section>
 
                   <section class="pdf-state state-links" data-preview="links" aria-label="Real PDF export preserving a highlighted link">
-                    <div class="real-page"><img src="assets/control-pdf/links-proof-background.png" alt="Albert Einstein page with a highlighted theoretical physics link"><span class="link-focus-ring" aria-hidden="true"></span></div>
+                    <div class="real-page"><img src="assets/control-pdf/links-proof-background.png" alt="Full Albert Einstein page with no cropped edges"><span class="link-focus-ring" aria-hidden="true"><img src="assets/control-pdf/link-tooltip-proof.png" alt=""></span></div>
                   </section>
 
                   <section class="pdf-state state-format" data-preview="format" aria-label="Portrait and landscape PDF formats compared">
