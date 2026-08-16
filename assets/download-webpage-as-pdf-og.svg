@@ -21,7 +21,6 @@
     <rect x="740" y="237" width="280" height="9" rx="4.5" fill="#d9dde4"/><rect x="740" y="257" width="240" height="9" rx="4.5" fill="#d9dde4"/><rect x="740" y="277" width="262" height="9" rx="4.5" fill="#d9dde4"/>
     <rect x="740" y="313" width="159" height="104" rx="7" fill="#fff0ec"/><path d="M740 385c36-44 74-27 100-8 27-21 52-20 59 5v35H740z" fill="#ff9b8a"/><circle cx="775" cy="342" r="16" fill="#ffb5a8"/>
   </g>
-  <path d="M647 307h-44m20-20 24 20-24 20" fill="none" stroke="#ff6852" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"/>
   <g filter="url(#shadow)">
     <rect x="839" y="320" width="255" height="250" rx="12" fill="#fff" stroke="#dedee4" stroke-width="2"/>
     <rect x="868" y="355" width="118" height="12" rx="6" fill="#252832"/><rect x="1019" y="347" width="45" height="30" rx="7" fill="#ff6852"/>
