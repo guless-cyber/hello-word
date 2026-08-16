@@ -336,10 +336,11 @@
       .format-portrait img { object-position: 50% 8%; }
       .format-landscape img { object-position: 50% 26%; }
       .format-label { position: absolute; z-index: 3; right: 7px; bottom: 7px; padding: 4px 5px; border-radius: 4px; color: #ffffff; background: #252832; font-size: 8px; font-weight: 800; }
-      .state-clean .real-page { aspect-ratio: .77; max-width: 74%; }
-      .state-clean img { object-position: 50% 5%; }
-      .clean-footer { position: absolute; right: 9px; bottom: 9px; display: inline-flex; align-items: center; gap: 5px; padding: 5px 6px; border: 1px solid #d7eadb; border-radius: 5px; color: #3f7652; background: rgba(255,253,249,.95); font-size: 8px; font-weight: 850; }
-      .clean-footer::before { content: "✓"; display: grid; place-items: center; width: 12px; height: 12px; border-radius: 50%; color: #ffffff; background: #55a46a; font-size: 8px; }
+      .state-clean { padding: 28px 14px 24px; }
+      .state-clean .real-page { align-self: stretch; height: 100%; aspect-ratio: .77; max-width: 74%; }
+      .state-clean img { object-fit: contain; object-position: center; }
+      .clean-footer { position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid #b8d9c0; border-radius: 8px; color: #2f7042; background: rgba(255,253,249,.97); box-shadow: 0 7px 16px rgba(63,118,82,.14); font-size: 15px; font-weight: 850; line-height: 1.1; }
+      .clean-footer::before { content: "✓"; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; color: #ffffff; background: #55a46a; font-size: 12px; }
       .hotspot-stage[data-mode="clean"] .rail-default,
       .hotspot-stage[data-mode="format"] .rail-default,
       .hotspot-stage[data-mode="links"] .rail-default { opacity: 0; }
@@ -467,6 +468,9 @@
         .rail-state { padding: 9px 7px; }
         .rail-page-stack i { height: 51px; }
         .state-hide, .state-links, .state-clean { padding: 10px; }
+        .state-clean { padding: 20px 10px 18px; }
+        .clean-footer { right: 8px; bottom: 8px; gap: 6px; padding: 7px 8px; font-size: 11px; }
+        .clean-footer::before { width: 16px; height: 16px; font-size: 9px; }
         .format-settings { gap: 4px; padding: 5px 6px; font-size: 7px; }
         .format-portrait { top: 37px; width: 40%; }
         .format-landscape { top: 31%; width: 76%; }
@@ -568,7 +572,7 @@
               <button class="hotspot is-active" type="button" data-mode="hide" aria-pressed="true">Hide unwanted blocks</button>
               <button class="hotspot" type="button" data-mode="links" aria-pressed="false">Keep links in your PDF</button>
               <button class="hotspot" type="button" data-mode="format" aria-pressed="false">Choose page size, orientation, and margins</button>
-              <button class="hotspot" type="button" data-mode="clean" aria-pressed="false">No account. No watermark.</button>
+              <button class="hotspot" type="button" data-mode="clean" aria-pressed="false">No watermark.</button>
             </div>
 
             <div class="control-pdf real-pdf-viewer" aria-label="Interactive preview of a real exported PDF">
