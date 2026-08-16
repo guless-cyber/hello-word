@@ -223,7 +223,7 @@
       .doc-link::before { content: "↗"; margin-right: 5px; }
       .doc-banner { height: 72px; margin-top: 24px; border-radius: 6px; background: linear-gradient(120deg, #f2c1b4, #ffe9e1 58%, #afb8cb 59%); transition: opacity .2s ease, transform .2s ease; }
       .document-watermark { position: absolute; right: 23px; bottom: 22px; color: #d0d3d9; font-size: 11px; font-weight: 850; letter-spacing: .09em; transform: rotate(-19deg); transition: opacity .2s ease, transform .2s ease; }
-      .hotspots { position: absolute; z-index: 2; inset: 0; }
+      .hotspots { position: absolute; z-index: 2; inset: 0; pointer-events: none; }
       .hotspot {
         position: absolute;
         display: flex;
@@ -240,6 +240,7 @@
         font-weight: 760;
         line-height: 1.25;
         text-align: left;
+        pointer-events: auto;
         transition: border-color .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
       }
       .hotspot::after { content: ""; position: absolute; width: 34px; height: 1px; background: #c8cbd3; transition: background .18s ease; }
