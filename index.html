@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Save the page you’re viewing as one continuous PDF.">
+    <meta name="description" content="Download any webpage as a high-quality, paginated PDF in Chrome with selectable text and working links for printing, sharing, and offline reference">
     <link rel="icon" type="image/png" href="favicon/favicon.png">
-    <title>Web to PDF — Save the page you’re viewing</title>
+    <title>Download webpage as PDF — Download Websites as PDFs</title>
     <style>
       :root {
         --ink: #17191f;
@@ -370,8 +370,10 @@
       .step { position: relative; min-width: 0; text-align: center; }
       .step:not(:last-child)::after { content: "→"; position: absolute; top: 102px; right: -26px; z-index: 1; display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; color: var(--accent); background: #f8f0ec; font-size: 20px; }
       .step-button { width: 100%; padding: 0; border: 0; color: inherit; background: transparent; }
+      .step-link { display: block; }
       .step-visual { display: grid; place-items: center; height: 205px; margin-bottom: 20px; border: 1px solid #e4dcd9; border-radius: 22px; background: var(--white); transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
       .step-button:hover .step-visual, .step-button.is-active .step-visual { border-color: var(--accent); box-shadow: 0 13px 25px rgba(255, 104, 82, .13); transform: translateY(-3px); }
+      .step-link:hover .step-visual, .step-link:focus-visible .step-visual { border-color: var(--accent); box-shadow: 0 13px 25px rgba(255, 104, 82, .13); transform: translateY(-3px); }
       .step-visual-image { overflow: hidden; background: #fffdfb; }
       .step-visual-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
       .step-index { display: inline-block; margin-bottom: 8px; color: var(--accent); font-size: 11px; font-weight: 850; letter-spacing: .1em; }
@@ -504,12 +506,12 @@
   <body>
     <header class="site-header">
       <div class="shell nav">
-        <a class="brand" href="#top" aria-label="Download webpage as PDF home"><span class="brand-mark" aria-hidden="true">↗</span>Download webpage as PDF</a>
+        <a class="brand" href="https://chromewebstore.google.com/detail/download-web-as-pdf/ooaclffhlgljhnodmnecbafldiinnagg?utm_medium=website" target="_blank" rel="noreferrer" aria-label="Download webpage as PDF in the Chrome Web Store"><span class="brand-mark" aria-hidden="true">↗</span>Download webpage as PDF</a>
         <nav class="nav-links" aria-label="Primary navigation">
           <a href="#benefits">Why it works</a>
           <a href="#privacy">Privacy</a>
         </nav>
-        <a class="nav-cta" href="https://chromewebstore.google.com/" target="_blank" rel="noreferrer">Add to Chrome</a>
+        <a class="nav-cta" href="https://chromewebstore.google.com/detail/download-web-as-pdf/ooaclffhlgljhnodmnecbafldiinnagg?utm_medium=website" target="_blank" rel="noreferrer">Add to Chrome</a>
       </div>
     </header>
 
@@ -520,7 +522,7 @@
             <p class="eyebrow">CHROME EXTENSION</p>
             <h1 id="hero-title">Save the page you’re viewing as one PDF.</h1>
             <p class="hero-lede">Keep the full page in one PDF—no page breaks, readable layout, selectable text.</p>
-            <a class="primary-cta" href="https://chromewebstore.google.com/" target="_blank" rel="noreferrer"><span class="chrome-dot" aria-hidden="true">●</span>Add to Chrome</a>
+            <a class="primary-cta" href="https://chromewebstore.google.com/detail/download-web-as-pdf/ooaclffhlgljhnodmnecbafldiinnagg?utm_medium=website" target="_blank" rel="noreferrer"><span class="chrome-dot" aria-hidden="true">●</span>Add to Chrome</a>
             <p class="proof">One continuous PDF · No uploads—your content stays on your device.</p>
           </div>
 
@@ -665,10 +667,10 @@
               </button>
             </div>
             <div class="step">
-              <button class="step-button" type="button" aria-pressed="false">
+              <a class="step-button step-link" href="https://chromewebstore.google.com/detail/download-web-as-pdf/ooaclffhlgljhnodmnecbafldiinnagg?utm_medium=website" target="_blank" rel="noreferrer" aria-label="Open Download webpage as PDF in the Chrome Web Store">
                 <span class="step-visual" aria-hidden="true"><span class="extension-icon">↗</span></span>
                 <span class="step-index">02</span><span class="step-label">Click the extension</span>
-              </button>
+              </a>
             </div>
             <div class="step">
               <button class="step-button" type="button" aria-pressed="false">
@@ -735,7 +737,7 @@
 
     <footer class="site-footer" id="privacy">
       <div class="shell footer-row">
-        <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">↗</span>Download webpage as PDF</a>
+        <a class="brand" href="https://chromewebstore.google.com/detail/download-web-as-pdf/ooaclffhlgljhnodmnecbafldiinnagg?utm_medium=website" target="_blank" rel="noreferrer" aria-label="Download webpage as PDF in the Chrome Web Store"><span class="brand-mark" aria-hidden="true">↗</span>Download webpage as PDF</a>
         <span>Made for pages that deserve to stay whole.</span>
         <nav class="footer-links" aria-label="Footer navigation"><a href="#benefits">Benefits</a><a href="#faq">FAQ</a><a href="#top">Top</a></nav>
       </div>
@@ -821,7 +823,7 @@
         button.addEventListener('click', () => showHideState(button.dataset.hideState));
       });
 
-      const stepButtons = [...document.querySelectorAll('.step-button')];
+      const stepButtons = [...document.querySelectorAll('button.step-button')];
       let selectedStep = 0;
 
       function showStep(index) {
