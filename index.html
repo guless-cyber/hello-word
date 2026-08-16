@@ -320,9 +320,17 @@
       .pdf-state.is-visible { visibility: visible; opacity: 1; transform: translateY(0); }
       .real-page { position: relative; width: 100%; max-height: 100%; overflow: hidden; border: 1px solid #d9dce2; border-radius: 3px; background: var(--white); box-shadow: 0 8px 16px rgba(23,25,31,.08); }
       .real-page img { display: block; width: 100%; height: 100%; object-fit: cover; }
-      .state-hide .real-page { align-self: stretch; height: 100%; margin: 0; aspect-ratio: auto; }
+      .state-hide { display: block; padding: 16px; }
+      .hide-comparison { position: relative; display: grid; place-items: center; width: 100%; height: 100%; }
+      .hide-after { position: relative; z-index: 1; width: 100%; height: 100%; }
+      .hide-after img { object-fit: contain; object-position: center; }
+      .hide-before { position: absolute; z-index: 3; top: 8px; left: 0; width: clamp(140px, 42%, 190px); aspect-ratio: 1.299; overflow: visible; border: 1px solid #cdd1d9; border-radius: 4px; background: var(--white); box-shadow: 0 10px 20px rgba(23,25,31,.16); }
+      .hide-before img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
+      .hide-proof-label { position: absolute; z-index: 4; display: inline-flex; align-items: center; gap: 5px; padding: 5px 7px; border-radius: 5px; color: #4c5361; background: rgba(255,255,255,.96); box-shadow: 0 4px 10px rgba(23,25,31,.1); font-size: 9px; font-weight: 850; letter-spacing: .04em; line-height: 1; text-transform: uppercase; }
+      .hide-before .hide-proof-label { top: 7px; left: 7px; }
+      .hide-after .hide-proof-label { right: 8px; bottom: 8px; color: #2f7042; }
+      .hide-after .hide-proof-label::before { content: "✓"; display: grid; place-items: center; width: 13px; height: 13px; border-radius: 50%; color: var(--white); background: #55a46a; font-size: 8px; }
       .state-links .real-page { align-self: stretch; height: 100%; margin: 0; aspect-ratio: auto; }
-      .state-hide img { object-fit: cover; object-position: 16% top; }
       .state-links .real-page > img { object-fit: contain; object-position: center; }
       .link-focus-ring { position: absolute; top: 24%; left: 24%; width: min(74%, 320px); aspect-ratio: 4.96; box-sizing: border-box; overflow: hidden; border: 2px solid #55a46a; border-radius: 5px; background: #ffffff; box-shadow: 0 0 0 4px rgba(85, 164, 106, .14), 0 8px 16px rgba(63, 118, 82, .18); pointer-events: none; }
       .link-focus-ring img { display: block; width: 100%; height: 100%; object-fit: contain; }
@@ -469,6 +477,9 @@
         .rail-state { padding: 9px 7px; }
         .rail-page-stack i { height: 51px; }
         .state-hide, .state-links, .state-clean { padding: 10px; }
+        .hide-before { top: 6px; width: clamp(122px, 44%, 142px); }
+        .hide-proof-label { gap: 4px; padding: 4px 5px; font-size: 8px; }
+        .hide-after .hide-proof-label::before { width: 11px; height: 11px; font-size: 7px; }
         .state-clean { padding: 20px 10px 18px; }
         .clean-footer { right: 8px; bottom: 8px; gap: 6px; padding: 7px 8px; font-size: 11px; }
         .clean-footer::before { width: 16px; height: 16px; font-size: 9px; }
@@ -586,7 +597,7 @@
                 <aside class="page-rail" aria-label="PDF page thumbnails">
                   <div class="rail-state rail-default">
                     <span class="rail-label">1 / 20</span>
-                    <div class="rail-document"><img src="assets/control-pdf/hide-proof.png" alt="First page of a real Albert Einstein PDF"></div>
+                    <div class="rail-document"><img src="assets/control-pdf/hide-after.png" alt="First page of the clean Albert Einstein PDF"></div>
                     <span class="rail-more" aria-hidden="true">19 more pages</span>
                   </div>
                   <div class="rail-state rail-continuous">
@@ -600,8 +611,11 @@
                 </aside>
 
                 <div class="pdf-stage">
-                  <section class="pdf-state state-hide is-visible" data-preview="hide" aria-label="Clean Albert Einstein PDF export with unwanted blocks removed">
-                    <div class="real-page"><img src="assets/control-pdf/hide-proof.png" alt="A real Albert Einstein PDF page without unwanted blocks"></div>
+                  <section class="pdf-state state-hide is-visible" data-preview="hide" aria-label="Before and after comparison of unwanted Wikipedia blocks removed from a real Albert Einstein PDF export">
+                    <div class="hide-comparison">
+                      <figure class="hide-before"><img src="assets/control-pdf/hide-before.png" alt="Original Albert Einstein web page with Contents and Appearance sidebars"><figcaption class="hide-proof-label">Before</figcaption></figure>
+                      <figure class="real-page hide-after"><img src="assets/control-pdf/hide-after.png" alt="Complete Albert Einstein PDF page with the unwanted sidebars removed"><figcaption class="hide-proof-label">Clean PDF</figcaption></figure>
+                    </div>
                   </section>
 
                   <section class="pdf-state state-links" data-preview="links" aria-label="Real PDF export preserving a highlighted link">
