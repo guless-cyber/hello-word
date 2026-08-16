@@ -369,7 +369,6 @@
       .how-intro { max-width: 680px; }
       .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 52px; }
       .step { position: relative; min-width: 0; text-align: center; }
-      .step:not(:last-child)::after { content: "→"; position: absolute; top: 102px; right: -26px; z-index: 1; display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; color: var(--accent); background: #f8f0ec; font-size: 20px; }
       .step-button { width: 100%; padding: 0; border: 0; color: inherit; background: transparent; }
       .step-link { display: block; }
       .step-visual { display: grid; place-items: center; height: 205px; margin-bottom: 20px; border: 1px solid #e4dcd9; border-radius: 22px; background: var(--white); transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
@@ -451,7 +450,6 @@
         .hotspot-stage[data-mode="format"] .control-pdf { width: min(100%, 510px); }
         .hotspot-stage[data-mode="format"] .paper-sheet { min-height: 408px; }
         .steps { grid-template-columns: 1fr; gap: 35px; max-width: 440px; margin-right: auto; margin-left: auto; }
-        .step:not(:last-child)::after { top: auto; right: auto; bottom: -31px; left: calc(50% - 12px); transform: rotate(90deg); }
         .faq-list { max-width: 620px; }
       }
       @media (max-width: 520px) {
@@ -477,7 +475,6 @@
         .hotspots { gap: 9px; }
         .hotspot { min-height: 74px; padding: 11px; font-size: 12px; }
         .step-visual { height: 174px; }
-        .step:not(:last-child)::after { top: auto; }
         .faq-list { margin-top: 40px; }
         .faq-item summary { min-height: 64px; gap: 16px; padding: 13px 0; font-size: 16px; }
         .faq-answer { padding-right: 8px; padding-bottom: 20px; font-size: 15px; }
