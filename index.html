@@ -323,15 +323,19 @@
       .real-page { position: relative; width: 100%; max-height: 100%; overflow: hidden; border: 1px solid #d9dce2; border-radius: 3px; background: var(--white); box-shadow: 0 8px 16px rgba(23,25,31,.08); }
       .real-page img { display: block; width: 100%; height: 100%; object-fit: cover; }
       .state-hide { display: block; padding: 16px; }
-      .hide-comparison { position: relative; display: grid; place-items: center; width: 100%; height: 100%; padding: 18px 0; }
-      .hide-after { position: relative; z-index: 1; width: 100%; height: auto; aspect-ratio: 1.349; }
-      .hide-after img { object-fit: contain; object-position: center; }
-      .hide-before { position: absolute; z-index: 3; top: 4%; left: 0; width: clamp(180px, 52%, 220px); aspect-ratio: 1.299; overflow: visible; border: 1px solid #cdd1d9; border-radius: 4px; background: var(--white); box-shadow: 0 10px 20px rgba(23,25,31,.16); }
-      .hide-before img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
-      .hide-proof-label { position: absolute; z-index: 4; display: inline-flex; align-items: center; gap: 5px; padding: 5px 7px; border-radius: 5px; color: #4c5361; background: rgba(255,255,255,.96); box-shadow: 0 4px 10px rgba(23,25,31,.1); font-size: 9px; font-weight: 850; letter-spacing: .04em; line-height: 1; text-transform: uppercase; }
-      .hide-before .hide-proof-label { top: 7px; left: 7px; }
-      .hide-after .hide-proof-label { right: 8px; bottom: 8px; color: #2f7042; }
-      .hide-after .hide-proof-label::before { content: "✓"; display: grid; place-items: center; width: 13px; height: 13px; border-radius: 50%; color: var(--white); background: #55a46a; font-size: 8px; }
+      .hide-comparison { display: grid; place-items: center; width: 100%; height: 100%; }
+      .hide-slider { --slider-position: 48%; position: relative; width: 100%; max-height: 100%; aspect-ratio: 1.349; overflow: hidden; border: 1px solid #d9dce2; border-radius: 4px; background: var(--white); box-shadow: 0 8px 16px rgba(23,25,31,.08); touch-action: pan-y; }
+      .hide-slider-layer { position: absolute; inset: 0; }
+      .hide-slider-layer img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+      .hide-slider-before { z-index: 2; clip-path: inset(0 calc(100% - var(--slider-position)) 0 0); }
+      .hide-slider-before img { object-position: center top; }
+      .hide-slider-label { position: absolute; top: 10px; z-index: 1; padding: 6px 8px; border-radius: 5px; color: #4c5361; background: rgba(255,255,255,.94); box-shadow: 0 4px 10px rgba(23,25,31,.1); font-size: 9px; font-weight: 850; letter-spacing: .05em; line-height: 1; text-transform: uppercase; }
+      .hide-slider-before .hide-slider-label { left: 10px; }
+      .hide-slider-after .hide-slider-label { right: 10px; color: #2f7042; }
+      .hide-slider-divider { position: absolute; z-index: 4; top: 0; bottom: 0; left: var(--slider-position); width: 2px; background: var(--accent); box-shadow: 0 0 0 1px rgba(255,255,255,.7); transform: translateX(-50%); pointer-events: none; }
+      .hide-slider-handle { position: absolute; top: 50%; left: 50%; display: grid; place-items: center; width: 34px; height: 34px; border: 2px solid var(--accent); border-radius: 50%; color: var(--accent); background: var(--white); box-shadow: 0 6px 14px rgba(23,25,31,.16); font-size: 15px; font-weight: 900; transform: translate(-50%, -50%); }
+      .hide-slider-input { position: absolute; z-index: 5; inset: 0; width: 100%; height: 100%; margin: 0; appearance: none; cursor: ew-resize; opacity: 0; }
+      .hide-slider-input:focus-visible ~ .hide-slider-divider .hide-slider-handle { outline: 3px solid rgba(255,104,82,.35); outline-offset: 3px; }
       .state-links .real-page { align-self: stretch; height: 100%; margin: 0; aspect-ratio: auto; }
       .state-links .real-page > img { object-fit: contain; object-position: center; }
       .link-focus-ring { position: absolute; top: 24%; left: 24%; width: min(74%, 320px); aspect-ratio: 4.96; box-sizing: border-box; overflow: hidden; border: 2px solid #55a46a; border-radius: 5px; background: #ffffff; box-shadow: 0 0 0 4px rgba(85, 164, 106, .14), 0 8px 16px rgba(63, 118, 82, .18); pointer-events: none; }
@@ -481,9 +485,11 @@
         .rail-state { padding: 9px 7px; }
         .rail-page-stack i { height: 51px; }
         .state-hide, .state-links, .state-clean { padding: 10px; }
-        .hide-before { top: 5%; width: clamp(146px, 52%, 160px); }
-        .hide-proof-label { gap: 4px; padding: 4px 5px; font-size: 8px; }
-        .hide-after .hide-proof-label::before { width: 11px; height: 11px; font-size: 7px; }
+        .hide-slider { height: 100%; aspect-ratio: auto; }
+        .hide-slider-label { top: 7px; padding: 5px 6px; font-size: 8px; }
+        .hide-slider-before .hide-slider-label { left: 7px; }
+        .hide-slider-after .hide-slider-label { right: 7px; }
+        .hide-slider-handle { width: 30px; height: 30px; font-size: 13px; }
         .state-clean { padding: 20px 10px 18px; }
         .clean-footer { right: 8px; bottom: 8px; gap: 6px; padding: 7px 8px; font-size: 11px; }
         .clean-footer::before { width: 16px; height: 16px; font-size: 9px; }
@@ -616,8 +622,12 @@
                 <div class="pdf-stage">
                   <section class="pdf-state state-hide is-visible" data-preview="hide" aria-label="Before and after comparison of unwanted Wikipedia blocks removed from a real Albert Einstein PDF export">
                     <div class="hide-comparison">
-                      <figure class="hide-before"><img src="assets/control-pdf/hide-before.png" alt="Original Albert Einstein web page with Contents and Appearance sidebars"><figcaption class="hide-proof-label">Before</figcaption></figure>
-                      <figure class="real-page hide-after"><img src="assets/control-pdf/hide-after-detail.png" alt="Readable 100 percent view of the clean Albert Einstein PDF page with unwanted sidebars removed"><figcaption class="hide-proof-label">PDF detail · 100%</figcaption></figure>
+                      <div class="hide-slider" role="group" aria-label="Before and after comparison of unwanted blocks removed from the PDF">
+                        <div class="hide-slider-layer hide-slider-after"><img src="assets/control-pdf/hide-after-detail.png" alt="Readable 100 percent view of the clean Albert Einstein PDF page with unwanted sidebars removed"><span class="hide-slider-label">Clean PDF</span></div>
+                        <div class="hide-slider-layer hide-slider-before"><img src="assets/control-pdf/hide-before.png" alt="Original Albert Einstein web page with Contents and Appearance sidebars"><span class="hide-slider-label">Before</span></div>
+                        <input class="hide-slider-input" type="range" min="0" max="100" value="48" aria-label="Drag to compare the original web page and clean PDF">
+                        <span class="hide-slider-divider" aria-hidden="true"><span class="hide-slider-handle">↔</span></span>
+                      </div>
                     </div>
                   </section>
 
@@ -803,6 +813,14 @@
           selectHotspot(index);
         });
       });
+
+      const hideSlider = document.querySelector('.hide-slider');
+      const hideSliderInput = document.querySelector('.hide-slider-input');
+      if (hideSlider && hideSliderInput) {
+        const updateHideSlider = () => hideSlider.style.setProperty('--slider-position', `${hideSliderInput.value}%`);
+        hideSliderInput.addEventListener('input', updateHideSlider);
+        updateHideSlider();
+      }
 
       const stepButtons = [...document.querySelectorAll('.step-button')];
       let selectedStep = 0;
