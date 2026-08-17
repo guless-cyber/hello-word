@@ -36,11 +36,6 @@
       }
     </script>
     <link rel="icon" type="image/png" href="favicon/favicon.png">
-    <link rel="preload" as="image" href="assets/control-pdf/hide-before.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/control-pdf/hide-after.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/control-pdf/link-tooltip-proof.png" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/control-pdf/portrait-format.png">
-    <link rel="preload" as="image" href="assets/control-pdf/landscape-format.png">
     <title>Download webpage as PDF — Download Websites as PDFs</title>
     <style>
       :root {
@@ -637,12 +632,12 @@
                     </div>
                     <div class="hide-state-panel">
                       <img class="hide-state-image" data-hide-image="before" src="assets/control-pdf/hide-before.jpg" alt="Original Albert Einstein page with Contents and Appearance sidebars">
-                      <img class="hide-state-image" data-hide-image="after" src="assets/control-pdf/hide-after.jpg" alt="Clean exported Albert Einstein PDF without sidebars" hidden>
+                      <img class="hide-state-image" data-hide-image="after" data-preview-src="hide" data-src="assets/control-pdf/hide-after.jpg" alt="Clean exported Albert Einstein PDF without sidebars" hidden>
                     </div>
                   </section>
 
                   <section class="pdf-state state-links" data-preview="links" aria-label="Real PDF export preserving a highlighted link">
-                    <div class="real-page"><img src="assets/control-pdf/links-proof-background.png" alt="Full Albert Einstein page with no cropped edges"><span class="link-focus-ring" aria-hidden="true"><img src="assets/control-pdf/link-tooltip-proof.png" alt=""></span></div>
+                    <div class="real-page"><img data-preview-src="links" data-src="assets/control-pdf/links-proof-background.png" alt="Full Albert Einstein page with no cropped edges"><span class="link-focus-ring" aria-hidden="true"><img data-preview-src="links" data-src="assets/control-pdf/link-tooltip-proof.png" alt=""></span></div>
                   </section>
 
                   <section class="pdf-state state-format" data-preview="format" data-format-active="portrait" aria-label="Choose a PDF page orientation">
@@ -651,13 +646,13 @@
                       <button class="format-state-button" type="button" data-format-state="landscape" aria-pressed="false">Landscape</button>
                     </div>
                     <div class="format-state-panel">
-                      <img class="format-state-image" data-format-image="portrait" src="assets/control-pdf/portrait-format.png" alt="A4 portrait Albert Einstein PDF with normal margins">
-                      <img class="format-state-image" data-format-image="landscape" src="assets/control-pdf/landscape-format.png" alt="A4 landscape Albert Einstein PDF with narrow margins" hidden>
+                      <img class="format-state-image" data-preview-src="format" data-format-image="portrait" data-format-src="portrait" data-src="assets/control-pdf/portrait-format.png" alt="A4 portrait Albert Einstein PDF with normal margins">
+                      <img class="format-state-image" data-format-image="landscape" data-format-src="landscape" data-src="assets/control-pdf/landscape-format.png" alt="A4 landscape Albert Einstein PDF with narrow margins" hidden>
                     </div>
                   </section>
 
                   <section class="pdf-state state-clean" data-preview="clean" aria-label="Clean PDF export with no account or watermark">
-                    <div class="real-page"><img src="assets/control-pdf/no-watermark-proof.png" alt="A real clean Albert Einstein PDF without a watermark"><span class="clean-footer" aria-hidden="true">No added branding</span></div>
+                    <div class="real-page"><img data-preview-src="clean" data-src="assets/control-pdf/no-watermark-proof.png" alt="A real clean Albert Einstein PDF without a watermark"><span class="clean-footer" aria-hidden="true">No added branding</span></div>
                   </section>
                 </div>
               </div>
@@ -802,8 +797,17 @@
       const previewStatus = document.querySelector('.pdf-viewer-status');
       let selectedHotspot = 0;
 
+      function loadPreviewImage(image) {
+        if (!image.hasAttribute('src')) image.src = image.dataset.src;
+      }
+
+      function loadPreview(mode) {
+        document.querySelectorAll(`[data-preview-src="${mode}"]`).forEach(loadPreviewImage);
+      }
+
       function showHotspot(index) {
         const mode = hotspots[index].dataset.mode;
+        loadPreview(mode);
         hotspotStage.dataset.mode = mode;
         hotspots.forEach((hotspot, current) => hotspot.classList.toggle('is-active', current === index));
         pdfStates.forEach(state => state.classList.toggle('is-visible', state.dataset.preview === mode));
@@ -820,6 +824,7 @@
         hotspot.addEventListener('click', () => selectHotspot(index));
         hotspot.addEventListener('mouseenter', () => showHotspot(index));
         hotspot.addEventListener('mouseleave', () => showHotspot(selectedHotspot));
+        hotspot.addEventListener('focus', () => loadPreview(hotspot.dataset.mode));
         hotspot.addEventListener('keydown', event => {
           if (!['Enter', ' '].includes(event.key)) return;
           event.preventDefault();
@@ -830,6 +835,7 @@
       const hideStateButtons = [...document.querySelectorAll('[data-hide-state]')];
       const hideStateImages = [...document.querySelectorAll('[data-hide-image]')];
       function showHideState(state) {
+        loadPreview('hide');
         hideStateButtons.forEach(button => button.setAttribute('aria-pressed', button.dataset.hideState === state));
         hideStateImages.forEach(image => image.hidden = image.dataset.hideImage !== state);
       }
@@ -840,6 +846,7 @@
       const formatStateButtons = [...document.querySelectorAll('[data-format-state]')];
       const formatStateImages = [...document.querySelectorAll('[data-format-image]')];
       function showFormatState(state) {
+        loadPreviewImage(document.querySelector(`[data-format-src="${state}"]`));
         formatStateButtons.forEach(button => button.setAttribute('aria-pressed', button.dataset.formatState === state));
         formatStateImages.forEach(image => image.hidden = image.dataset.formatImage !== state);
         document.querySelector('.state-format').dataset.formatActive = state;
