@@ -39,6 +39,8 @@
     <link rel="preload" as="image" href="assets/control-pdf/hide-before.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="assets/control-pdf/hide-after.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="assets/control-pdf/link-tooltip-proof.png" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/control-pdf/portrait-format.png">
+    <link rel="preload" as="image" href="assets/control-pdf/landscape-format.png">
     <title>Download webpage as PDF — Download Websites as PDFs</title>
     <style>
       :root {
@@ -366,17 +368,32 @@
       .hide-state-image[hidden] { display: none; }
       .state-links .real-page { align-self: stretch; height: 100%; margin: 0; aspect-ratio: auto; }
       .state-links .real-page > img { object-fit: contain; object-position: center; }
-      .link-focus-ring { position: absolute; top: 24%; left: 24%; width: min(74%, 320px); aspect-ratio: 4.96; box-sizing: border-box; overflow: hidden; border: 2px solid #55a46a; border-radius: 5px; background: #ffffff; box-shadow: 0 0 0 4px rgba(85, 164, 106, .14), 0 8px 16px rgba(63, 118, 82, .18); pointer-events: none; }
+      .link-focus-ring {
+        position: absolute;
+        top: 24%;
+        left: 24%;
+        width: min(54%, 240px);
+        aspect-ratio: 4.96;
+        box-sizing: border-box;
+        overflow: hidden;
+        border: 1px solid #b8d9c0;
+        border-radius: 8px;
+        background: rgba(255,253,249,.97);
+        box-shadow: 0 7px 16px rgba(63,118,82,.14);
+        pointer-events: none;
+      }
       .link-focus-ring img { display: block; width: 100%; height: 100%; object-fit: contain; }
-      .format-comparison { position: relative; width: 100%; height: 100%; padding: 4px; }
-      .format-settings { position: absolute; z-index: 4; top: 4px; left: 4px; display: inline-flex; max-width: calc(100% - 8px); gap: 6px; padding: 6px 8px; border: 1px solid #f0d3cc; border-radius: 6px; color: #a65344; background: rgba(255,253,249,.96); box-shadow: 0 4px 10px rgba(23,25,31,.08); font-size: 8px; font-weight: 850; line-height: 1.2; }
-      .format-settings span { white-space: nowrap; }
-      .format-settings b { color: var(--accent); }
-      .format-portrait, .format-landscape { position: absolute; overflow: hidden; border: 1px solid #d7dae0; border-radius: 4px; background: var(--white); box-shadow: 0 9px 19px rgba(23,25,31,.12); }
-      .format-portrait { z-index: 3; top: 31%; left: 3%; width: 27%; aspect-ratio: 2 / 3; }
-      .format-landscape { z-index: 2; top: 18%; right: 3%; width: 74%; aspect-ratio: 1.412; }
-      .format-portrait img, .format-landscape img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
-      .format-label { position: absolute; z-index: 3; right: 7px; bottom: 7px; padding: 4px 5px; border-radius: 4px; color: #ffffff; background: #252832; font-size: 8px; font-weight: 800; }
+      .state-format { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 11px; padding: 14px; }
+      .format-state-toggle { display: inline-flex; align-self: center; gap: 4px; padding: 4px; border: 1px solid #dde0e6; border-radius: 8px; background: #f4f5f7; }
+      .format-state-button { min-width: 92px; min-height: 30px; padding: 6px 11px; border: 0; border-radius: 5px; color: #68707d; background: transparent; font-size: 10px; font-weight: 850; letter-spacing: .06em; line-height: 1; text-transform: uppercase; }
+      .format-state-button:hover { color: #d94f3d; }
+      .format-state-button[aria-pressed="true"] { color: #ffffff; background: var(--accent); box-shadow: 0 4px 9px rgba(255,104,82,.23); }
+      .format-state-button:focus-visible { outline: 3px solid rgba(255,104,82,.36); outline-offset: 2px; }
+      .format-state-panel { position: relative; min-width: 0; min-height: 0; width: 100%; height: 100%; overflow: hidden; }
+      .format-state-image { position: absolute; inset: 0; display: block; box-sizing: border-box; width: 100%; height: 100%; border: 1px solid #d9dce2; border-radius: 4px; background: var(--white); box-shadow: 0 8px 16px rgba(23,25,31,.08); object-fit: contain; object-position: center; }
+      .format-state-image[hidden] { display: none; }
+      .state-format[data-format-active="portrait"] .format-state-panel { width: auto; aspect-ratio: 1350 / 1408; justify-self: center; }
+      .state-format[data-format-active="landscape"] .format-state-panel { width: auto; aspect-ratio: 1416 / 1920; justify-self: center; }
       .state-clean { padding: 28px 14px 24px; }
       .state-clean .real-page { align-self: stretch; height: 100%; aspect-ratio: .77; max-width: 74%; }
       .state-clean img { object-fit: contain; object-position: center; }
@@ -531,7 +548,7 @@
         .clean-footer { right: 8px; bottom: 8px; gap: 6px; padding: 7px 8px; font-size: 11px; }
         .clean-footer::before { width: 16px; height: 16px; font-size: 9px; }
         .link-focus-ring { top: 29%; }
-        .format-settings { gap: 4px; padding: 5px 6px; font-size: 7px; }
+        .format-state-button { min-width: 76px; min-height: 28px; padding: 5px 9px; font-size: 9px; }
         .hotspot-stage::before { height: 444px; }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -669,11 +686,14 @@
                     <div class="real-page"><img src="assets/control-pdf/links-proof-background.png" alt="Full Albert Einstein page with no cropped edges"><span class="link-focus-ring" aria-hidden="true"><img src="assets/control-pdf/link-tooltip-proof.png" alt=""></span></div>
                   </section>
 
-                  <section class="pdf-state state-format" data-preview="format" aria-label="Portrait and landscape PDF formats compared">
-                    <div class="format-comparison">
-                      <div class="format-settings" aria-hidden="true"><span>A4 · Portrait · Normal</span><b>→</b><span>A4 · Landscape · Narrow</span></div>
-                      <div class="format-portrait"><img src="assets/control-pdf/portrait-top.png" alt="A4 portrait Albert Einstein PDF with normal margins"><span class="format-label">Portrait</span></div>
-                      <div class="format-landscape"><img src="assets/control-pdf/landscape-page-1.png" alt="A4 landscape Albert Einstein PDF with narrow margins"><span class="format-label">Landscape</span></div>
+                  <section class="pdf-state state-format" data-preview="format" data-format-active="portrait" aria-label="Choose a PDF page orientation">
+                    <div class="format-state-toggle" role="group" aria-label="Choose PDF orientation">
+                      <button class="format-state-button" type="button" data-format-state="portrait" aria-pressed="true">Portrait</button>
+                      <button class="format-state-button" type="button" data-format-state="landscape" aria-pressed="false">Landscape</button>
+                    </div>
+                    <div class="format-state-panel">
+                      <img class="format-state-image" data-format-image="portrait" src="assets/control-pdf/portrait-format.png" alt="A4 portrait Albert Einstein PDF with normal margins">
+                      <img class="format-state-image" data-format-image="landscape" src="assets/control-pdf/landscape-format.png" alt="A4 landscape Albert Einstein PDF with narrow margins" hidden>
                     </div>
                   </section>
 
@@ -856,6 +876,17 @@
       }
       hideStateButtons.forEach(button => {
         button.addEventListener('click', () => showHideState(button.dataset.hideState));
+      });
+
+      const formatStateButtons = [...document.querySelectorAll('[data-format-state]')];
+      const formatStateImages = [...document.querySelectorAll('[data-format-image]')];
+      function showFormatState(state) {
+        formatStateButtons.forEach(button => button.setAttribute('aria-pressed', button.dataset.formatState === state));
+        formatStateImages.forEach(image => image.hidden = image.dataset.formatImage !== state);
+        document.querySelector('.state-format').dataset.formatActive = state;
+      }
+      formatStateButtons.forEach(button => {
+        button.addEventListener('click', () => showFormatState(button.dataset.formatState));
       });
 
       const stepButtons = [...document.querySelectorAll('button.step-button')];
