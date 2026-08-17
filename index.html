@@ -327,7 +327,7 @@
       .pdf-viewer-status { min-width: 0; overflow: hidden; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
       .pdf-viewer-body {
         display: grid;
-        grid-template-columns: 62px minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr);
         flex: 1 1 auto;
         min-height: 0;
         overflow: hidden;
@@ -335,23 +335,6 @@
         border-radius: 7px;
         background: #e9ebef;
       }
-      .page-rail {
-        position: relative;
-        min-width: 0;
-        overflow: hidden;
-        border-right: 1px solid #dde0e5;
-        background: #e6e8ed;
-      }
-      .rail-state { position: absolute; inset: 0; padding: 11px 9px; opacity: 0; transition: opacity .2s ease; }
-      .rail-default { opacity: 1; }
-      .rail-label { display: block; margin-bottom: 8px; color: #7e8592; font-size: 8px; font-weight: 850; line-height: 1; letter-spacing: .06em; text-align: center; }
-      .rail-default .rail-document { aspect-ratio: 240 / 1558; height: auto; max-height: calc(100% - 23px); overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); box-shadow: 0 2px 4px rgba(23,25,31,.06); }
-      .rail-default .rail-document img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top; }
-      .rail-continuous .rail-document { height: calc(100% - 23px); overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); box-shadow: 0 2px 4px rgba(23,25,31,.06); }
-      .rail-continuous img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top; }
-      .rail-format { display: block; }
-      .rail-format span { display: block; height: 100%; overflow: hidden; border: 1px solid #cfd3db; border-radius: 2px; background: var(--white); }
-      .rail-format img { width: 100%; height: 100%; object-fit: contain; object-position: top; }
       .pdf-stage { position: relative; min-width: 0; min-height: 0; overflow: hidden; background: var(--white); }
       .pdf-state { position: absolute; inset: 0; display: grid; place-items: center; padding: 14px; visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
       .pdf-state.is-visible { visibility: visible; opacity: 1; transform: translateY(0); }
@@ -399,12 +382,6 @@
       .state-clean img { object-fit: contain; object-position: center; }
       .clean-footer { position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid #b8d9c0; border-radius: 8px; color: #2f7042; background: rgba(255,253,249,.97); box-shadow: 0 7px 16px rgba(63,118,82,.14); font-size: 15px; font-weight: 850; line-height: 1.1; }
       .clean-footer::before { content: "✓"; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; color: #ffffff; background: #55a46a; font-size: 12px; }
-      .hotspot-stage[data-mode="clean"] .rail-default,
-      .hotspot-stage[data-mode="format"] .rail-default,
-      .hotspot-stage[data-mode="links"] .rail-default { opacity: 0; }
-      .hotspot-stage[data-mode="clean"] .rail-continuous,
-      .hotspot-stage[data-mode="links"] .rail-continuous,
-      .hotspot-stage[data-mode="format"] .rail-format { opacity: 1; }
       .hotspot-stage[data-mode="hide"] .state-hide,
       .hotspot-stage[data-mode="links"] .state-links,
       .hotspot-stage[data-mode="format"] .state-format,
@@ -528,7 +505,6 @@
       @media (max-width: 820px) {
         #controls .control-pdf.real-pdf-viewer { width: min(100%, 510px); height: 484px; min-height: 484px; padding: 11px; }
         #controls .hotspot-stage[data-mode="hide"] .control-pdf.real-pdf-viewer { width: min(100%, 510px); }
-        .pdf-viewer-body { grid-template-columns: 54px minmax(0, 1fr); }
         #controls .hotspot { inset: auto; }
         .hotspot-stage::before { height: 494px; }
       }
@@ -537,9 +513,6 @@
         #controls .hotspot-stage[data-mode="hide"] .control-pdf.real-pdf-viewer { width: 100%; }
         .pdf-viewer-bar { min-height: 28px; padding-bottom: 7px; }
         .pdf-viewer-bar strong { max-width: 54%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .pdf-viewer-body { grid-template-columns: 48px minmax(0, 1fr); }
-        .rail-state { padding: 9px 7px; }
-        .rail-page-stack i { height: 51px; }
         .state-hide, .state-links, .state-clean { padding: 10px; }
         .state-hide { gap: 8px; }
         .hide-state-toggle { padding: 3px; }
@@ -656,20 +629,6 @@
                 <span class="pdf-viewer-status">100%</span>
               </div>
               <div class="pdf-viewer-body">
-                <aside class="page-rail" aria-label="PDF page thumbnails">
-                  <div class="rail-state rail-default">
-                    <span class="rail-label">1 PAGE</span>
-                    <div class="rail-document"><img src="assets/control-pdf/hide-continuous.png" alt="The complete continuous Albert Einstein PDF page"></div>
-                  </div>
-                  <div class="rail-state rail-continuous">
-                    <span class="rail-label">1 PAGE</span>
-                    <div class="rail-document"><img src="assets/control-pdf/portrait-continuous.png" alt="One continuous Albert Einstein PDF page"></div>
-                  </div>
-                  <div class="rail-state rail-format" aria-hidden="true">
-                    <span><img src="assets/control-pdf/portrait-continuous.png" alt=""></span>
-                  </div>
-                </aside>
-
                 <div class="pdf-stage">
                   <section class="pdf-state state-hide is-visible" data-preview="hide" aria-label="Before and after comparison of unwanted Wikipedia blocks removed from a real Albert Einstein PDF export">
                     <div class="hide-state-toggle" role="group" aria-label="Choose the original page or clean PDF">
