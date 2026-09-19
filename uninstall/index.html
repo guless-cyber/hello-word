@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Share feedback about Download webpage as PDF.">
+    <meta name="referrer" content="no-referrer">
+    <meta name="theme-color" content="#fffdf9">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src https://api.eu.amplitude.com; frame-src https://docs.google.com; base-uri 'none'; form-action 'none'"
+    >
+    <link rel="icon" type="image/png" href="../favicon/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <title>Thank you for using Download webpage as PDF</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Download webpage as PDF home">
+        <span class="brand-mark" aria-hidden="true">↗</span>
+        <span>Download webpage as PDF</span>
+      </a>
+    </header>
+
+    <main class="page">
+      <header class="intro">
+        <p class="eyebrow">YOUR FEEDBACK</p>
+        <h1>Thank you for using Download webpage as PDF</h1>
+        <p class="lede">We’d appreciate your feedback. It helps us improve the extension.</p>
+      </header>
+
+      <section class="feedback" aria-label="Feedback form">
+        <p class="feedback-fallback">
+          Form not loading?
+          <a id="feedback-link" href="https://docs.google.com/forms/d/e/1FAIpQLSe-ek0KMli33WJ4BRr567q9w9cTzwRTs5OPq510VAW6YhlPFw/viewform" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Open feedback form</a>.
+        </p>
+        <iframe
+          id="feedback-form"
+          class="feedback-frame"
+          title="Download webpage as PDF feedback form"
+          loading="eager"
+          referrerpolicy="no-referrer"
+          hidden
+        >
+        </iframe>
+      </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script type="module" src="main.mjs"></script>
+  </body>
+</html>
