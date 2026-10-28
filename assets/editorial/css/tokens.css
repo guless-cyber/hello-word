@@ -1,0 +1,40 @@
+/* Download webpage as PDF — design tokens. Generated from the design system (tokens.json). */
+@font-face{font-family:Montserrat;src:url("../fonts/Montserrat-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:Inter;src:url("../fonts/Inter-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+:root{
+  --text:#292a2e;
+  --muted:#6b6e76;
+  --accent:#b84230;
+  --accent-hover:#a43828;
+  --accent-active:#902f22;
+  --tint:#fff0ec;
+  --selected:#ecebf0;
+  --workspace:#f1f4f8;
+  --panel:#fafbfc;
+  --paper:#ffffff;
+  --border:#dce0e6;
+  --switch-track:#e4e8ee;
+  --rule:#e9edf2;
+  --rule-strong:#dce2e9;
+  --highlight:#ffe279;
+  --selection:#f6cfbd;
+  --button-border:#0b120e24;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-12:48px;
+  --space-16:64px;
+  --space-24:100px;
+  --radius-sm:2px;
+  --radius-md:8px;
+  --radius-lg:16px;
+  --radius-full:999px;
+  --shadow-paper:0 12px 30px #292a2e0c;
+  --shadow-pop:0 12px 32px #292a2e1a;
+  --shadow-dialog:0 24px 64px #292a2e26;
+  --font-sans:Montserrat, ui-sans-serif, system-ui, sans-serif;
+  --font-text:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}

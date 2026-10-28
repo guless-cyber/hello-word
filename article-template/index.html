@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noimageindex">
+  <!-- TEMPLATE: all copy below is demo content. Replace per article; keep the structure and classes. -->
+  <title>How to Save a Webpage as PDF with Highlights and Notes — Download webpage as PDF</title>
+  <meta name="description" content="Save any webpage as one continuous PDF in Chrome, then add highlights, notes and arrows. Step-by-step guide with settings, printing and fixes.">
+  <link rel="canonical" href="https://downloadwebpageaspdf.com/article-template/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to save a webpage as PDF with highlights and notes">
+  <meta property="og:description" content="One continuous PDF, then highlights, notes and arrows. Step by step.">
+  <meta property="og:url" content="https://downloadwebpageaspdf.com/article-template/">
+  <meta property="og:image" content="https://downloadwebpageaspdf.com/assets/download-webpage-as-pdf-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon/favicon.png" type="image/png">
+  <link rel="preload" href="/assets/editorial/fonts/Montserrat-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/editorial/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/editorial/css/tokens.css">
+  <link rel="stylesheet" href="/assets/editorial/css/article.css">
+  <script src="/assets/editorial/js/article.js" defer></script>
+</head>
+<body>
+<!-- Icon sprite: Anpdf line style, 24px grid, stroke 1.8 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6ZM14 2v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5ZM4 19a2 2 0 0 1 2-2h13"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="m9 11 8-8 4 4-8 8M9 11l4 4-3 3-4-4 3-3ZM6 14l-3 7 7-3"/></symbol>
+    <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6V4h16v2M12 4v16M9 20h6"/></symbol>
+    <symbol id="i-rect" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M15 4l5 5L9 20H4v-5L15 4Z"/></symbol>
+    <symbol id="i-hl" viewBox="0 0 24 24"><path d="M6 20 12 4l6 16M8.5 14h7M4 22h16"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.1A10 10 0 0 1 22 12a14 14 0 0 1-2.6 3.4M6.6 6.6A14 14 0 0 0 2 12a10 10 0 0 0 13.4 4.8M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
+    <symbol id="i-erase" viewBox="0 0 24 24"><path d="m7 21-4-4 11-11 7 7-8 8H7ZM10 10l7 7M7 21h14"/></symbol>
+    <symbol id="i-cursor" viewBox="0 0 24 24"><path d="m4 4 7 17 2.5-7.5L21 11 4 4Z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12Z"/></symbol>
+    <symbol id="i-form" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6M7 17h4"/></symbol>
+    <symbol id="i-shapes" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4"/><path d="M14 14h7v7h-7zM16 3l5 8h-10z"/></symbol>
+    <symbol id="i-sign" viewBox="0 0 24 24"><path d="M3 17c3-5 5-9 7-9s-1 9 2 9 3-4 5-4 1 3 4 3M3 21h18"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 21h16"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7V4h3M18 4h3v3M21 17v3h-3M6 20H3v-3M7 12h10"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m-5 5 5-5 5 5M4 20h16"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">↗</span>Download webpage as PDF</a>
+    <nav class="nav" aria-label="Main"><a href="/blog/" aria-current="page">Blog</a><a href="/#how-it-works">How it works</a><a href="/#privacy">Privacy</a></nav>
+    <a class="btn" data-cws href="https://chromewebstore.google.com/detail/download-web-as-pdf/ooaclffhlgljhnodmnecbafldiinnagg?hl=en&amp;utm_source=site&amp;utm_medium=article&amp;utm_content=header" target="_blank" rel="noopener"><span>Add<span class="lbl-long"> to Chrome</span></span> <span class="arr" aria-hidden="true">↗</span></a>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<main id="content">
+  <!-- ============ 1. TOP OF ARTICLE ============ -->
+  <section class="top wrap">
+    <div class="top-inner">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol><li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li><a role="link" aria-disabled="true" title="Example content" aria-current="page">Chrome</a></li></ol>
+      </nav>
+
+      <div class="kicker">
+        <span class="badge"><svg class="i"><use href="#i-book"/></svg>Guide</span>
+        <a class="eyebrow" role="link" aria-disabled="true" title="Example content">Chrome</a>
+      </div>
+
+      <h1>How to save a webpage as PDF with <span class="hl">highlights and notes</span></h1>
+      <p class="lead">Keep the whole page as one continuous PDF, then mark what matters: highlights, notes and arrows, right in Chrome.</p>
+
+      <div class="byline">
+        <div class="author">
+          <img class="avatar" src="/assets/editorial/img/author.svg" width="48" height="48" alt="Anna Novak">
+          <div>
+            <a class="author-name" role="link" aria-disabled="true" title="Example content">Anna Novak</a>
+            <div class="author-role">Product writer, PDF tools</div>
+          </div>
+        </div>
+        <div class="meta">
+          <span><svg class="i"><use href="#i-cal"/></svg>Updated <time datetime="2026-10-24">Oct 24, 2026</time></span>
+          <span><svg class="i"><use href="#i-clock"/></svg>8 min read</span>
+        </div>
+      </div>
+
+      <div class="byline" style="border-top:0;padding-top:0;margin-top:20px">
+        <ul class="tags" aria-label="Tags" style="margin-top:0">
+          <li><a role="link" aria-disabled="true" title="Example content">Save as PDF</a></li>
+          <li><a role="link" aria-disabled="true" title="Example content">Annotate PDF</a></li>
+          <li><a role="link" aria-disabled="true" title="Example content">Chrome</a></li>
+        </ul>
+        <div class="share" data-share>
+          <span class="share-label">Share</span>
+          <a class="net" data-net="whatsapp" href="#" target="_blank" rel="noopener" aria-label="Share on WhatsApp">WhatsApp</a>
+          <a class="net" data-net="linkedin" href="#" target="_blank" rel="noopener" aria-label="Share on LinkedIn">LinkedIn</a>
+          <a class="net" data-net="facebook" href="#" target="_blank" rel="noopener" aria-label="Share on Facebook">Facebook</a>
+          <a class="net" data-net="x" href="#" target="_blank" rel="noopener" aria-label="Share on X">X</a>
+          <a class="net" data-net="telegram" href="#" target="_blank" rel="noopener" aria-label="Share on Telegram">Telegram</a>
+          <a class="net" data-net="reddit" href="#" target="_blank" rel="noopener" aria-label="Share on Reddit">Reddit</a>
+          <button class="copy" type="button" data-copy><svg class="i"><use href="#i-link"/></svg><span>Copy link</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Large image under H1: interactive before/after. Replace with an <img> per article if needed. -->
+    <figure class="cover" style="margin-top:40px">
+      <div class="example" data-view="paged" data-compare>
+        <div class="example-bar">
+          <span class="file"><svg class="i"><use href="#i-file"/></svg>travel-guide.pdf</span>
+          <div class="switch" role="group" aria-label="Compare result">
+            <button class="btn" type="button" data-set="paged" aria-pressed="true">Print to PDF</button>
+            <button class="btn" type="button" data-set="continuous" aria-pressed="false">With the extension</button>
+          </div>
+        </div>
+        <div class="stage">
+          <div class="sheet" aria-hidden="true">
+            <div class="doc-heading">Weekend in Lisbon<span class="doc-dot"></span></div>
+            <div class="rule w90"></div><div class="rule w70"></div><div class="rule w80"></div><div class="rule w60"></div>
+            <div class="pic"><div class="break"><span>Page break · image cut</span></div></div>
+            <div class="rule w95" style="margin-top:22px"></div><div class="rule w80"></div><div class="rule w50"></div>
+            <div class="sheet-note"><span class="mark">Book the tram tour</span><br>before Friday</div>
+          </div>
+          <div class="cover-copy" aria-live="polite">
+            <div data-when="paged">
+              <p class="cover-title" style="font-size:26px;line-height:1.3;font-weight:600;letter-spacing:-.02em;font-family:var(--font-sans);color:var(--text);margin:0">Chrome's Print to PDF</p>
+              <p>Slices the page into A4 sheets wherever a sheet ends.</p>
+              <ul><li><svg class="i"><use href="#i-alert"/></svg>Images and tables cut in half</li><li><svg class="i"><use href="#i-alert"/></svg>Sticky headers repeated on every sheet</li><li><svg class="i"><use href="#i-alert"/></svg>No way to add notes</li></ul>
+            </div>
+            <div data-when="continuous" hidden>
+              <p class="cover-title" style="font-size:26px;line-height:1.3;font-weight:600;letter-spacing:-.02em;font-family:var(--font-sans);color:var(--text);margin:0">Download webpage as PDF</p>
+              <p>Saves the page as one continuous PDF, ready to annotate.</p>
+              <ul><li><svg class="i"><use href="#i-check"/></svg>Nothing cut, text stays selectable</li><li><svg class="i"><use href="#i-check"/></svg>Highlights, notes and arrows</li><li><svg class="i"><use href="#i-check"/></svg>Stays on your device</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption class="caption">The same travel guide saved two ways. Switch to compare.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 2. BODY: TOC + CONTENT ============ -->
+  <div class="body wrap">
+    <details class="toc" open data-toc>
+      <summary>On this page<svg class="i"><use href="#i-chev"/></svg></summary>
+      <ol>
+        <li><a href="#short-answer">Short answer<svg class="i"><use href="#i-check"/></svg></a></li>
+        <li><a href="#extension">Save a webpage as PDF in Chrome<svg class="i"><use href="#i-check"/></svg></a></li>
+        <li class="sub"><a href="#install">Install the extension</a></li>
+        <li class="sub"><a href="#save">Save the page</a></li>
+        <li class="sub"><a href="#page-size">Page size and orientation</a></li>
+        <li><a href="#on-site">Annotate a PDF on the site<svg class="i"><use href="#i-check"/></svg></a></li>
+        <li><a href="#annotations">Add highlights and notes<svg class="i"><use href="#i-check"/></svg></a></li>
+        <li class="sub"><a href="#settings">Color, size and opacity</a></li>
+        <li><a href="#more-tools">Comments, forms and shapes<svg class="i"><use href="#i-check"/></svg></a></li>
+        <li><a href="#download">Save and download<svg class="i"><use href="#i-check"/></svg></a></li>
+        <li><a href="#print">Print with annotations<svg class="i"><use href="#i-check"/></svg></a></li>
+        <li><a href="#scanned">Scanned PDFs<svg class="i"><use href="#i-check"/></svg></a></li>
+        <li><a href="#problems">Problems and fixes<svg class="i"><use href="#i-check"/></svg></a></li>
+        <li><a href="#faq">FAQ<svg class="i"><use href="#i-check"/></svg></a></li>
+      </ol>
+      <div class="toc-cta">
+        <p>Save any page as one PDF, free.</p>
+        <a class="btn" data-cws href="https://chromewebstore.google.com/detail/download-web-as-pdf/ooaclffhlgljhnodmnecbafldiinnagg?hl=en&amp;utm_source=site&amp;utm_medium=article&amp;utm_content=toc" target="_blank" rel="noopener">Add to Chrome <span class="arr" aria-hidden="true">↗</span></a>
+      </div>
+    </details>
+
+    <article class="prose">
+      <!-- First paragraph: the reader's task, the benefit, a reason to keep reading -->
+      <p class="intro">You found a page worth keeping: a recipe, a contract draft, a research article. Chrome's Print to PDF cuts it into sheets, and you still can't mark anything. This guide shows how to <b>save a webpage as one continuous PDF</b> and add highlights and notes in a couple of minutes, plus how to print it and fix the usual problems.</p>
+
+      <!-- Visually distinct block on its own background -->
+      <section class="answer" id="short-answer" aria-labelledby="short-answer-title">
+        <div class="answer-head" id="short-answer-title"><svg class="i"><use href="#i-file"/></svg>Short answer<span class="chip">30 sec</span></div>
+        <p>Install Download webpage as PDF, click its icon on the page you want and choose <span class="ui">Download as PDF</span>. Then open the file in Annotate PDF to highlight text and add notes.</p>
+        <ol class="mini-steps">
+          <li><b><span>1</span>Open</b>the page you want to keep</li>
+          <li><b><span>2</span>Save</b>it as one PDF with the extension</li>
+          <li><b><span>3</span>Annotate</b>and download the result</li>
+        </ol>
+      </section>
+
+      <!-- H2 → method 1 (in the extension) -->
+      <h2 id="extension">How to save a webpage as PDF in Chrome</h2>
+      <p>The fastest way is the Download webpage as PDF extension. It keeps the page exactly as you see it, as one long PDF page with selectable text.</p>
+
+      <h3 id="install">Install the extension</h3>
+      <ol class="steps">
+        <li>
+          <div class="step-title">Open the extension page in the Chrome Web Store</div>
+          <div class="step-text">Go to <a data-cws href="https://chromewebstore.google.com/detail/download-web-as-pdf/ooaclffhlgljhnodmnecbafldiinnagg?hl=en&amp;utm_source=site&amp;utm_medium=article&amp;utm_content=step" target="_blank" rel="noopener">Download webpage as PDF in the Chrome Web Store</a> and click <span class="ui">Add to Chrome</span>.</div>
+        </li>
+        <li>
+          <div class="step-title">Confirm the installation</div>
+          <div class="step-text">In the dialog, click <span class="ui">Add extension</span>.</div>
+          <div class="step-result"><svg class="i"><use href="#i-check"/></svg>The icon appears under <span class="ui">Extensions</span> in the Chrome toolbar.</div>
+        </li>
+        <li>
+          <div class="step-title">Pin it for one-click access</div>
+          <div class="step-text">Click <span class="ui">Extensions</span>, then the pin next to Download webpage as PDF.</div>
+          <div class="step-result"><svg class="i"><use href="#i-check"/></svg>The icon stays next to the address bar.</div>
+        </li>
+      </ol>
+
+      <h3 id="save">Save the page as PDF</h3>
+      <ol class="steps">
+        <li>
+          <div class="step-title">Open the page and let it load fully</div>
+          <div class="step-text">Scroll to the end once so lazy-loaded images appear.</div>
+        </li>
+        <li>
+          <div class="step-title">Click the extension icon and choose <span class="ui">Download as PDF</span></div>
+          <div class="step-result"><svg class="i"><use href="#i-check"/></svg>A PDF with the whole page downloads to your <span class="ui">Downloads</span> folder.</div>
+        </li>
+      </ol>
+
+      <!-- GIF + caption -->
+      <figure class="media gif">
+        <span class="gif-badge">GIF</span>
+        <img src="/assets/editorial/img/demo.gif" width="960" height="540" loading="lazy" alt="Clicking the extension icon and saving the page as one continuous PDF">
+        <figcaption>Saving a long article as one PDF takes one click.</figcaption>
+      </figure>
+
+      <h3 id="page-size">Choose page size and orientation</h3>
+      <p>Before saving, open <span class="ui">Settings</span> in the extension popup:</p>
+      <ul>
+        <li><b>One page</b> keeps the page continuous, best for reading on screen.</li>
+        <li><b>A4 or Letter</b> splits the page into printable sheets without cutting images.</li>
+        <li><b>Portrait or landscape</b> fits wide tables and dashboards.</li>
+      </ul>
+
+      <!-- Interactive callout: whole block is the link -->
+      <a class="callout" role="link" aria-disabled="true" title="Example content" data-callout>
+        <span class="callout-icon"><svg class="i"><use href="#i-file"/></svg></span>
+        <span>
+          <span class="callout-title"><span>Need A4 sheets for printing?</span></span>
+          <span class="callout-text" style="display:block">See how to split a page into A4 without cutting images or tables.</span>
+        </span>
+        <svg class="i callout-go"><use href="#i-right"/></svg>
+      </a>
+
+      <!-- H2 → method 2 (directly on the site) + file upload -->
+      <h2 id="on-site">Annotate a PDF right on this site</h2>
+      <p>Already have the PDF? Drop it here. The file opens in the Annotate PDF editor in your browser and is never uploaded to a server.</p>
+
+      <div class="drop" data-drop>
+        <span class="drop-icon"><svg class="i"><use href="#i-upload"/></svg></span>
+        <span class="drop-title">Drop a PDF here</span>
+        <span class="drop-text">or <label for="pdf-file" style="color:var(--accent);text-decoration:underline;cursor:pointer;font-weight:500">choose a file</label></span>
+        <input id="pdf-file" type="file" accept="application/pdf,.pdf">
+        <div class="drop-file" aria-live="polite">
+          <svg class="i"><use href="#i-file"/></svg><b data-name>file.pdf</b><span data-size></span>
+          <a class="btn" data-open href="#">Open in editor <span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+        <span class="drop-privacy"><svg class="i"><use href="#i-lock"/></svg>Your file stays on your device</span>
+      </div>
+
+      <!-- H2 → annotations + settings -->
+      <h2 id="annotations">Add highlights, notes and arrows</h2>
+      <p>Pick a tool in the toolbar at the top of the editor, then click or drag on the page.</p>
+      <figure class="media">
+        <div class="toolbar" role="img" aria-label="Annotate PDF toolbar: Text, Rectangle, Arrow, Pencil, Highlight (selected), Hide, Eraser, Select, color, size">
+          <span class="t"><svg class="i"><use href="#i-text"/></svg></span>
+          <span class="t"><svg class="i"><use href="#i-rect"/></svg></span>
+          <span class="t"><svg class="i"><use href="#i-arrow"/></svg></span>
+          <span class="t"><svg class="i"><use href="#i-pencil"/></svg></span>
+          <span class="t" aria-current="true"><svg class="i"><use href="#i-hl"/></svg></span>
+          <span class="t"><svg class="i"><use href="#i-eye"/></svg></span>
+          <span class="t"><svg class="i"><use href="#i-erase"/></svg></span>
+          <span class="t"><svg class="i"><use href="#i-cursor"/></svg></span>
+          <span class="sep"></span>
+          <span class="dot"></span><span class="ring"></span><span class="slider"></span><span class="val">1</span>
+        </div>
+        <figcaption>The Annotate PDF toolbar. <span class="ui">Highlight</span> also offers <span class="ui">Underline</span> and <span class="ui">Strikethrough</span>.</figcaption>
+      </figure>
+      <ul>
+        <li><b>Highlight</b> marks text in yellow; switch to <span class="ui">Underline</span> or <span class="ui">Strikethrough</span> in the same menu.</li>
+        <li><b>Text</b> adds a note anywhere on the page.</li>
+        <li><b>Arrow</b> and <b>Rectangle</b> point to exactly where you mean.</li>
+        <li><b>Pencil</b> draws freehand; <b>Eraser</b> removes any annotation.</li>
+      </ul>
+
+      <h3 id="settings">Adjust an annotation: color, size, position, thickness and opacity</h3>
+      <p>Select an annotation with <span class="ui">Select</span>, then change it in the toolbar:</p>
+      <div class="table">
+        <table>
+          <thead><tr><th scope="col">Setting</th><th scope="col">Where</th><th scope="col">What it changes</th></tr></thead>
+          <tbody>
+            <tr><td>Color</td><td>Filled circle</td><td>Stroke and highlight color. Red for corrections, yellow for key facts.</td></tr>
+            <tr><td>Size</td><td>Drag a corner handle</td><td>Size of a note, rectangle or arrow.</td></tr>
+            <tr><td>Position</td><td>Drag the annotation</td><td>Moves it anywhere on the page.</td></tr>
+            <tr><td>Thickness</td><td>Slider, 1–10</td><td>Line width of arrows, rectangles and pencil.</td></tr>
+            <tr><td>Opacity</td><td>Outlined circle</td><td>How much of the text shows through a fill.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Collection / подборка -->
+      <h2 id="more-tools">More tools: comments, forms and shapes</h2>
+      <p>Annotations are only the start. These tools work on the same saved PDF:</p>
+      <div class="cards">
+        <a class="card" role="link" aria-disabled="true" title="Example content"><span class="card-icon"><svg class="i"><use href="#i-chat"/></svg></span><span class="card-title">Comments</span><span class="card-text">Leave a comment on any line and reply in a thread.</span></a>
+        <a class="card" role="link" aria-disabled="true" title="Example content"><span class="card-icon"><svg class="i"><use href="#i-form"/></svg></span><span class="card-title">Forms</span><span class="card-text">Type into form fields and tick boxes, then save.</span></a>
+        <a class="card" role="link" aria-disabled="true" title="Example content"><span class="card-icon"><svg class="i"><use href="#i-shapes"/></svg></span><span class="card-title">Shapes</span><span class="card-text">Circles, boxes and arrows to point things out.</span></a>
+        <a class="card" role="link" aria-disabled="true" title="Example content"><span class="card-icon"><svg class="i"><use href="#i-sign"/></svg></span><span class="card-title">Signature</span><span class="card-text">Draw or type your signature and place it.</span></a>
+      </div>
+
+      <!-- Saving / output -->
+      <h2 id="download">Save, download or share the result</h2>
+      <p>Click <span class="ui">Export</span> in the top right corner of the editor. Your annotations become part of the PDF, so anyone can see them in any PDF viewer.</p>
+      <div class="table">
+        <table>
+          <thead><tr><th scope="col">Method</th><th scope="col">One continuous page</th><th scope="col">Annotations</th><th scope="col">Works offline</th></tr></thead>
+          <tbody>
+            <tr><td>Download webpage as PDF + Annotate PDF</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+            <tr><td>Annotate on this site</td><td class="no">Your file as is</td><td class="yes">Yes</td><td class="no">No</td></tr>
+            <tr><td>Chrome Print to PDF</td><td class="no">No, A4 sheets</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Separate printing instruction -->
+      <h2 id="print">How to print a PDF with annotations</h2>
+      <ol>
+        <li>Open the annotated PDF in Annotate PDF.</li>
+        <li>Click <span class="ui">Print</span> in the top right corner.</li>
+        <li>In the Chrome print dialog, set <span class="ui">Destination</span> to your printer and open <span class="ui">More settings</span>.</li>
+        <li>Make sure <span class="ui">Background graphics</span> is on, otherwise highlights may not print.</li>
+        <li>Click <span class="ui">Print</span>.</li>
+      </ol>
+      <aside class="tip"><svg class="i"><use href="#i-print"/></svg><p><b>Tip.</b> Printing a long one-page PDF? Save it as A4 first in <a href="#page-size">the extension settings</a> so nothing is scaled down to a tiny strip.</p></aside>
+
+      <!-- Scanned PDF -->
+      <h2 id="scanned">Working with a scanned PDF or text you can't select</h2>
+      <p>A scanned PDF is a picture of a page, so there's no text to select. You can still annotate it: use <span class="ui">Rectangle</span> or <span class="ui">Pencil</span> instead of <span class="ui">Highlight</span>, and add notes with <span class="ui">Text</span>.</p>
+      <aside class="note"><svg class="i"><use href="#i-scan"/></svg><p>Pages saved with Download webpage as PDF always keep real, selectable text. Only scans and photos of documents behave like images.</p></aside>
+
+      <!-- Promo card -->
+      <section class="promo" aria-labelledby="promo-title">
+        <div>
+          <p class="promo-eyebrow">Free Chrome extension</p>
+          <h3 id="promo-title">Save any page as one PDF</h3>
+          <p>No page breaks, no uploads, no account. Works on pages behind a login.</p>
+          <div class="install">
+            <a class="btn btn--lg" data-cws href="https://chromewebstore.google.com/detail/download-web-as-pdf/ooaclffhlgljhnodmnecbafldiinnagg?hl=en&amp;utm_source=site&amp;utm_medium=article&amp;utm_content=promo" target="_blank" rel="noopener">Add to Chrome <span class="arr" aria-hidden="true">↗</span></a>
+            <p class="install-note">For Chrome on desktop</p>
+          </div>
+        </div>
+        <img class="promo-img" src="/assets/editorial/img/promo.svg" width="480" height="360" loading="lazy" alt="The extension popup with the Download as PDF button">
+      </section>
+
+      <!-- Problems → cause → fix -->
+      <h2 id="problems">Common problems and how to fix them</h2>
+      <div class="issues">
+        <div class="issue">
+          <div class="issue-title"><svg class="i"><use href="#i-lock"/></svg>The PDF won't let me add annotations</div>
+          <dl><dt>Cause</dt><dd>The file is password-protected or restricts editing.</dd><dt>Fix</dt><dd>Ask the sender for an unrestricted copy, or save the original webpage again with the extension.</dd></dl>
+        </div>
+        <div class="issue">
+          <div class="issue-title"><svg class="i"><use href="#i-eye"/></svg>I can't select anything on the page</div>
+          <dl><dt>Cause</dt><dd>A view-only tool is active, or the PDF is a scan.</dd><dt>Fix</dt><dd>Pick <span class="ui">Highlight</span> or <span class="ui">Select</span> in the toolbar. For scans, see <a href="#scanned">scanned PDFs</a>.</dd></dl>
+        </div>
+        <div class="issue">
+          <div class="issue-title"><svg class="i"><use href="#i-download"/></svg>My annotations disappeared after saving</div>
+          <dl><dt>Cause</dt><dd>The tab was closed before <span class="ui">Export</span> finished, or you opened the original file.</dd><dt>Fix</dt><dd>Export again and open the newest file in <span class="ui">Downloads</span>.</dd></dl>
+        </div>
+        <div class="issue">
+          <div class="issue-title"><svg class="i"><use href="#i-clock"/></svg>Saving takes a long time</div>
+          <dl><dt>Cause</dt><dd>Very long pages with many images or infinite scroll.</dd><dt>Fix</dt><dd>Wait for the progress bar to finish; for infinite feeds, scroll only as far as you need before saving.</dd></dl>
+        </div>
+      </div>
+
+      <!-- FAQ: question → answer -->
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">
+        <details><summary>Is the extension free?<svg class="i"><use href="#i-plus"/></svg></summary><div>Yes. Saving pages as PDF is free, with no account and no watermark.</div></details>
+        <details><summary>Are my pages or PDFs uploaded anywhere?<svg class="i"><use href="#i-plus"/></svg></summary><div>No. The PDF is created and annotated in your browser and stays on your device.</div></details>
+        <details><summary>Can I edit annotations after I download the PDF?<svg class="i"><use href="#i-plus"/></svg></summary><div>Yes. Open the downloaded file in Annotate PDF again; highlights and notes stay editable.</div></details>
+        <details><summary>Does it work on pages behind a login?<svg class="i"><use href="#i-plus"/></svg></summary><div>Yes. The extension saves the page exactly as you see it in your browser, including pages you are signed in to.</div></details>
+      </div>
+
+      <!-- ============ 3. END OF ARTICLE ============ -->
+      <section class="final" aria-labelledby="final-title">
+        <div>
+          <h2 id="final-title">Save your first page now</h2>
+          <p>Install the extension, open any page and click <span class="ui">Download as PDF</span>.</p>
+        </div>
+        <div class="final-actions install">
+          <a class="btn btn--lg" data-cws href="https://chromewebstore.google.com/detail/download-web-as-pdf/ooaclffhlgljhnodmnecbafldiinnagg?hl=en&amp;utm_source=site&amp;utm_medium=article&amp;utm_content=final" target="_blank" rel="noopener">Add to Chrome <span class="arr" aria-hidden="true">↗</span></a>
+          <a class="btn btn--ghost" href="#on-site">Annotate a PDF instead</a>
+        </div>
+      </section>
+
+      <section class="author-card" aria-label="About the author">
+        <img class="avatar" src="/assets/editorial/img/author.svg" width="96" height="96" alt="Anna Novak">
+        <div>
+          <p class="author-card-label">Written by</p>
+          <a class="author-card-name" role="link" aria-disabled="true" title="Example content">Anna Novak</a>
+          <p class="author-card-role">Product writer, PDF tools</p>
+          <p class="author-card-bio">Anna writes step-by-step guides for Download webpage as PDF and Annotate PDF and tests every instruction in the current version of Chrome.</p>
+          <div class="author-links"><a role="link" aria-disabled="true" title="Example content">All articles</a><a role="link" aria-disabled="true" title="Example author profile">LinkedIn</a></div>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <section class="related wrap" aria-labelledby="related-title">
+    <h2 class="section-title" id="related-title">Related guides</h2>
+    <div class="related-grid">
+      <a class="rel" role="link" aria-disabled="true" title="Example content"><span class="rel-img"><img src="/assets/editorial/img/related-1.svg" alt="" loading="lazy" width="320" height="180"></span><span class="rel-body"><span class="rel-type">Guide</span><span class="rel-title">Save a webpage as A4 PDF without cut images</span><span class="rel-meta">5 min read</span></span></a>
+      <a class="rel" role="link" aria-disabled="true" title="Example content"><span class="rel-img"><img src="/assets/editorial/img/related-2.svg" alt="" loading="lazy" width="320" height="180"></span><span class="rel-body"><span class="rel-type">Comparison</span><span class="rel-title">Chrome Print to PDF vs extensions: what's the difference</span><span class="rel-meta">7 min read</span></span></a>
+      <a class="rel" role="link" aria-disabled="true" title="Example content"><span class="rel-img"><img src="/assets/editorial/img/related-3.svg" alt="" loading="lazy" width="320" height="180"></span><span class="rel-body"><span class="rel-type">Guide</span><span class="rel-title">How to highlight text in a PDF in Chrome</span><span class="rel-meta">4 min read</span></span></a>
+    </div>
+  </section>
+
+  <nav class="pager wrap" aria-label="More articles">
+    <a class="prev" role="link" aria-disabled="true" title="Example content"><small><svg class="i"><use href="#i-left"/></svg>Previous article</small><b>Save a webpage as A4 PDF without cut images</b></a>
+    <a class="next" role="link" aria-disabled="true" title="Example content"><small>Next article<svg class="i"><use href="#i-right"/></svg></small><b>How to highlight text in a PDF in Chrome</b></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">↗</span>Download webpage as PDF</a>
+    <nav aria-label="Footer"><a href="/blog/">Blog</a><a href="https://annotatepdf.app/">Annotate PDF</a><a href="/#privacy">Privacy Policy</a></nav>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" data-toast></div>
+</body>
+</html>
