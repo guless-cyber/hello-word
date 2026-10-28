@@ -306,14 +306,6 @@ a.card:hover{border-color:var(--accent);box-shadow:var(--shadow-pop)}
 .rel-title{font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.35}
 .rel-meta{margin-top:auto;padding-top:8px;font-family:var(--font-text);font-size:14px;color:var(--muted)}
 
-.pager{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:24px 0 80px}
-.pager a{display:flex;flex-direction:column;gap:6px;padding:22px 24px;border-radius:var(--radius-lg);background:var(--paper);border:1px solid var(--border);text-decoration:none;transition:border-color 160ms}
-.pager a:hover{border-color:var(--accent)}
-.pager .next{text-align:right;align-items:flex-end}
-.pager small{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--accent)}
-.pager small svg.i{width:18px;height:18px}
-.pager b{font-size:18px;font-weight:600;letter-spacing:-.01em;line-height:1.35}
-
 .site-footer{border-top:1px solid var(--border)}
 .site-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:28px 0;flex-wrap:wrap}
 .site-footer .brand{font-size:18px}
@@ -375,8 +367,6 @@ a.card:hover{border-color:var(--accent);box-shadow:var(--shadow-pop)}
   .final h2{font-size:26px}
   .author-card{grid-template-columns:1fr;padding:22px}
   .related-grid{grid-template-columns:1fr}
-  .pager{grid-template-columns:1fr}
-  .pager .next{text-align:left;align-items:flex-start}
   .issue dl{grid-template-columns:1fr;gap:2px}
   .issue dd+dt{margin-top:8px}
   .callout{align-items:flex-start;padding:18px}
@@ -384,6 +374,6 @@ a.card:hover{border-color:var(--accent);box-shadow:var(--shadow-pop)}
   .toolbar .slider{width:70px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
-@media print{.site-header,.share,.toc,.final,.related,.pager,.site-footer,.promo,.drop{display:none!important}.body{display:block}}
+@media print{.site-header,.share,.toc,.final,.related,.site-footer,.promo,.drop{display:none!important}.body{display:block}}
 .author-card-bio,.final p,.cover-copy li{font-family:var(--font-text)}
 .promo .promo-eyebrow{font-size:12px!important;line-height:1.4!important;color:var(--accent)!important;font-family:var(--font-sans)}
